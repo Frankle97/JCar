@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+<style>
+#join a {text-align:left; margin-left:48%;}
+#join p {text-align:left; margin-left:35%; font-size:12px; color:#999999;}
+#join h4 {text-align:left; margin-left:35%;}
+#join label {text-align:left; margin-left:35%; font-size:13px; color:#666666;}
+#name {text-align:left; margin-left:35%; width:30%;} 
+#birth {text-align:left; margin-left:35%; width:30%;} 
+#id {text-align:left; margin-left:35%; width:30%;} 
+#password {text-align:left; margin-left:35%; width:30%;} 
+#passwordchk {text-align:left; margin-left:35%; width:30%;} 
+#contact {text-align:left; margin-left:35%; width:30%;} 
+#telnumber {text-align:left; margin-left:35%; width:30%;} 
+#email {text-align:left; margin-left:35%; width:30%;} 
+#post_code {text-align:left; margin-left:35%; width:30%;} 
+#address {text-align:left; margin-left:35%; width:30%;} 
+#address2 {text-align:left; margin-left:35%; width:30%;} 
+  .btn {
+    padding: 10px 20px;
+    background-color: #dc232d;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;	
+}
+</style>

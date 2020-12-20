@@ -7,10 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jyeob.dao.CarDao;
 import com.jyeob.dao.SellerDao;
 
-public class mypageRemoveSell implements Action{
+public class MypageReleaseSell implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -18,12 +17,12 @@ public class mypageRemoveSell implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		int no = Integer.parseInt(request.getParameter("no"));
-		int res = new SellerDao().removeOrder(no);
-		new CarDao().removeCar(no);
+		String id = request.getParameter("id");
+		int res = new SellerDao().releaseSellList(no);
 		if (res > 0) {
-			out.println("<script> alert('삭제완료'); location.href='"+request.getContextPath()+"/adminSellerList.do?id=admin'; </script>");
+			out.println("<script> location.href='"+request.getContextPath()+"/sellerMyPageList.do?id="+id+"'; </script>");
 		} else {
-			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); history.go(-1); </script>");
+			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); location.href='"+request.getContextPath()+"/sellerMyPageList.do?id="+id+"';</script>");
 		}
 	}
 

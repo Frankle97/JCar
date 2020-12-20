@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jyeob.dao.MemberDao;
 
-public class userRemoveForAdmin implements Action{
+public class UserFindPWAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		int res = new MemberDao().findMyPW(request.getParameter("id"), request.getParameter("name"));
 		
-		int res = new MemberDao().removeAccountForAdmin(request.getParameter("id"));
 		if (res > 0) {
-			out.println("<script>alert('유저 삭제 완료.'); location.href='"+request.getContextPath()+"/adminPage.do'; </script>");	
+			out.println("<script>location.href='"+request.getContextPath()+"/findPW_suc.do?no="+res+"'; </script>");
 		} else {
-			out.println("<script>alert('에러 발생.'); location.href='"+request.getContextPath()+"/adminPage.do'; </script>");
+			out.println("<script>alert('입력하신 정보와 일치하는 정보를 찾을 수 없습니다.다시 입력해주세요.'); history.go(-1); </script>");
 		}
 		
 	}

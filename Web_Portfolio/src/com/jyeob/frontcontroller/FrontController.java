@@ -32,19 +32,19 @@ import com.jyeob.membercontroller.CheckAcs;
 import com.jyeob.membercontroller.JoinAction;
 import com.jyeob.membercontroller.LoginAction;
 import com.jyeob.membercontroller.LogoutAction;
-import com.jyeob.membercontroller.main;
-import com.jyeob.membercontroller.mypageBringSell;
-import com.jyeob.membercontroller.mypageOrderSell;
-import com.jyeob.membercontroller.mypageOrderSellCancel;
-import com.jyeob.membercontroller.mypageReleaseSell;
-import com.jyeob.membercontroller.mypageRemoveSell;
-import com.jyeob.membercontroller.userChangeInfoAction;
-import com.jyeob.membercontroller.userChangePWAction;
-import com.jyeob.membercontroller.userFindIDAction;
-import com.jyeob.membercontroller.userFindPWAction;
-import com.jyeob.membercontroller.userList;
-import com.jyeob.membercontroller.userRemove;
-import com.jyeob.membercontroller.userRemoveForAdmin;
+import com.jyeob.membercontroller.Main;
+import com.jyeob.membercontroller.MypageBringSell;
+import com.jyeob.membercontroller.MypageOrderSell;
+import com.jyeob.membercontroller.MypageOrderSellCancel;
+import com.jyeob.membercontroller.MypageReleaseSell;
+import com.jyeob.membercontroller.MypageRemoveSell;
+import com.jyeob.membercontroller.UserChangeInfoAction;
+import com.jyeob.membercontroller.UserChangePWAction;
+import com.jyeob.membercontroller.UserFindIDAction;
+import com.jyeob.membercontroller.UserFindPWAction;
+import com.jyeob.membercontroller.UserList;
+import com.jyeob.membercontroller.UserRemove;
+import com.jyeob.membercontroller.UserRemoveForAdmin;
 
 /**
  * Servlet implementation class frontcontroller
@@ -94,17 +94,17 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/findID_suc.do")) {
 			request.getRequestDispatcher("/member/userFindID_Success.jsp").forward(request, response);
 		} else if (path.equals("/findID.do")) {
-			comm = new userFindIDAction();
+			comm = new UserFindIDAction();
 			comm.execute(request, response);
 		} else if (path.equals("/findPWView.do")) {
 			request.getRequestDispatcher("/member/userFindPW.jsp").forward(request, response);
 		} else if (path.equals("/findPW.do")) {
-			comm = new userFindPWAction();
+			comm = new UserFindPWAction();
 			comm.execute(request, response);
 		} else if (path.equals("/findPW_suc.do")) {
 			request.getRequestDispatcher("/member/userFindPW_Success.jsp").forward(request, response);
 		} else if (path.equals("/changePW.do")) {
-			comm = new userChangePWAction();
+			comm = new UserChangePWAction();
 			comm.execute(request, response);
 		} else if (path.equals("/loginView.do")) {
 			request.getRequestDispatcher("/member/userLogin.jsp").forward(request, response);
@@ -124,7 +124,7 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/changeMyInfo.do")) {
 			request.getRequestDispatcher("/member/changeMyInfo.jsp").forward(request, response);
 		} else if (path.equals("/changeInfo.do")) {
-			comm = new userChangeInfoAction();
+			comm = new UserChangeInfoAction();
 			comm.execute(request, response);
 		} else if (path.equals("/showNotice.do")) {
 			comm = new NoticeList();
@@ -133,7 +133,7 @@ public class FrontController extends HttpServlet {
 			comm = new NoticeWrite();
 			comm.execute(request, response);
 		} else if (path.equals("/car.do")) {
-			comm = new main();
+			comm = new Main();
 			comm.execute(request, response);
 		} else if (path.equals("/detailNotice.do")) {
 			comm = new NoticeDetail();
@@ -141,7 +141,7 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/userRemoveForm.do")) {
 			request.getRequestDispatcher("/member/userRemove.jsp").forward(request, response);
 		} else if (path.equals("/removeAccount.do")) {
-			comm = new userRemove();
+			comm = new UserRemove();
 			comm.execute(request, response);
 		} else if (path.equals("/writeNoticeView.do")) {
 			request.getRequestDispatcher("/boardNotice/noticeBoard_Write.jsp").forward(request, response);
@@ -171,12 +171,12 @@ public class FrontController extends HttpServlet {
 			comm = new NoticeListSearchOption();
 			comm.execute(request, response);
 		} else if (path.equals("/adminPage.do")) {
-			comm = new userList();
+			comm = new UserList();
 			comm.execute(request, response);
 		} else if (path.equals("/adminEditUser.do")) {
 			request.getRequestDispatcher("/admin/adminEditUserInfo.jsp").forward(request, response);
 		} else if (path.equals("/userRemoveForAdmin.do")) {
-			comm = new userRemoveForAdmin();
+			comm = new UserRemoveForAdmin();
 			comm.execute(request, response);
 		} else if (path.equals("/carList.do")) {
 			request.getRequestDispatcher("/buyCar/carList.jsp").forward(request, response);
@@ -195,22 +195,22 @@ public class FrontController extends HttpServlet {
 			comm = new AddSellerList();
 			comm.execute(request, response);
 		} else if (path.equals("/myPageOrderSell.do")) {
-			comm = new mypageOrderSell();
+			comm = new MypageOrderSell();
 			comm.execute(request, response);
 		} else if (path.equals("/myPageOrderSellCancel.do")) {
-			comm = new mypageOrderSellCancel();
+			comm = new MypageOrderSellCancel();
 			comm.execute(request, response);
 		} else if (path.equals("/sellerMyPage.do")) {
 			request.getRequestDispatcher("/member/sellerMyPagePosition.jsp").forward(request, response);
 		} else if (path.equals("/sellerMyPageList.do")) {
 			request.getRequestDispatcher("/member/sellerMyPageList.jsp").forward(request, response);
 		} else if (path.equals("/mypageBringSell.do")) {
-			comm = new mypageBringSell();
+			comm = new MypageBringSell();
 			comm.execute(request, response);
 		} else if (path.equals("/mypageAddList.do")) {
 			request.getRequestDispatcher("/sellCar/addSellCarList.jsp").forward(request, response);
 		} else if (path.equals("/mypageReleaseSell.do")){
-			comm = new mypageReleaseSell();
+			comm = new MypageReleaseSell();
 			comm.execute(request, response);
 		} else if (path.equals("/addListFinal.do")) {
 			comm = new AddListFinal(); 
@@ -218,7 +218,7 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/adminSellerList.do")) {
 			request.getRequestDispatcher("/admin/adminSellerPageList.jsp").forward(request, response);
 		} else if (path.equals("/mypageRemoveSell.do")) {
-			comm = new mypageRemoveSell();
+			comm = new MypageRemoveSell();
 			comm.execute(request, response);
 		} else if (path.equals("/detailCar.do")) {
 			comm = new CarDetail();

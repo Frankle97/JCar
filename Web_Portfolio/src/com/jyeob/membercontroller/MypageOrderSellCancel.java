@@ -9,20 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jyeob.dao.SellerDao;
 
-public class mypageReleaseSell implements Action{
+public class MypageOrderSellCancel implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		int no = Integer.parseInt(request.getParameter("no"));
-		String id = request.getParameter("id");
-		int res = new SellerDao().releaseSellList(no);
-		if (res > 0) {
-			out.println("<script> location.href='"+request.getContextPath()+"/sellerMyPageList.do?id="+id+"'; </script>");
+		
+		if (new SellerDao().removeMyOrder(request.getParameter("id")) > 0) {
+			out.println("<script>alert('주문이 취소되었습니다.'); location.href='"+request.getContextPath()+"/myPageOrderSell.do?id="+request.getParameter("id")+"'; </script>");
 		} else {
-			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); location.href='"+request.getContextPath()+"/sellerMyPageList.do?id="+id+"';</script>");
+			out.println("<script>alert('주문 취소에 실패하였습니다. 관리자에게 문의해주세요.); location.href='\"+request.getContextPath()+\"/myPageOrderSell.do?id=\"+request.getParameter(\"id\")+\"';</script>");
 		}
 	}
 

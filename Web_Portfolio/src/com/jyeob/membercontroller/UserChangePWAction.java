@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jyeob.dao.MemberDao;
 
-public class userChangePWAction implements Action{
+public class UserChangePWAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jyeob.dao.MemberDao;
 import com.jyeob.dto.MemberDto;
 
-public class userFindIDAction implements Action{
+public class UserFindIDAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

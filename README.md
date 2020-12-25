@@ -1,5 +1,5 @@
-# 중고차 판매 웹 프로젝트
-
+# J Car - 중고차 거래 사이트
+* K Car을 모티브 하여 기획 및 개발하였습니다. 
 ## 기술스택
 * Language : Java, JSP, HTML, CSS, Java Script
 * Library : Ajax, jQuery

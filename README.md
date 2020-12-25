@@ -1,5 +1,5 @@
 # J Car - 중고차 거래 사이트
-* K Car을 모티브 하여 기획 및 개발하였습니다. 
+* [K Car](http://kcar.com)을 모티브 하여 기획 및 개발하였습니다. 
 ## 기술 스택
 * Language : Java, JSP, HTML, CSS, Java Script
 * Library : Ajax, jQuery

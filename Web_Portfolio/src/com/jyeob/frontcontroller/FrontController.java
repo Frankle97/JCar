@@ -181,7 +181,7 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/carList.do")) {
 			request.getRequestDispatcher("/buyCar/carList.jsp").forward(request, response);
 		} else if (path.equals("/sendEmailView.do")) {
-			request.getRequestDispatcher("/admin/send_mail.jsp").forward(request, response);
+			request.getRequestDispatcher("/admin/sendEmail.jsp").forward(request, response);
 		} else if (path.equals("/sendEmail.do")) {
 			comm = new SendEmail();
 			comm.execute(request, response);

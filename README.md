@@ -1,8 +1,12 @@
-# 중고차 판매 웹 프로젝트
+# J Car
 
-## 기술스택
-* Language : Java, JSP, HTML, CSS, Java Script
-* Library : Ajax, jQuery
+* [K Car](http://kcar.com)를 모티브 하여 기획 및 개발하였습니다. 
+## 개요
+중고차 거래 사이트
+
+
+## 기술 스택
+* Language : Java, JSP, HTML, CSS, Java Script, Ajax, jQuery, Spring
 * Database : MySql
 
 ## 프로젝트 시연 
@@ -13,7 +17,7 @@
 
 
 
-# 차량 견적 저장 앱
+## [내 차 견적짜기](https://github.com/Frankle97/java-mycar)
 
 ## 기술스택
  * Language : Java

@@ -4,11 +4,11 @@
 * [K Car](http://kcar.com)를 모티브 하여 1인 기획 및 개발하였습니다. 
 
 
-### 사용 기술
-* Language : Java, JSP, html, css, Javascript, Ajax, jQuery, Spring
-* Database : MySql 5.7
-* Version  : jdk 8.0 / Tomcat 8.5
-* IDE      : Eclipse
+## 사용 기술
+* **Language** : Java, JSP, html, css, Javascript, Ajax, jQuery, Spring
+* **Database** : MySql 5.7
+* **Version**  : jdk 8.0 / Tomcat 8.5
+* **IDE**      : Eclipse
 
 ## 기획의도
 * 웹 접근성과 웹 표준을 준수하였습니다.

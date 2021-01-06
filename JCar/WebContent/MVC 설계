@@ -1,0 +1,93 @@
+JOIN / LOGIN VIEW
+joinSelect.jsp				> 개인회원/매매회원 선택
+joinTerms.jsp				> 이용약관 
+joinClient.jsp				> 회원가입 페이지 
+joinCom.jsp					> 회원가입 확인 페이지 
+
+매매회원 MYPAGE VIEW 
+sellerMyPagePosition.jsp	> 마이페이지 - 보유매물 페이지
+sellerMyPageList.jsp		> 마이페이지 - 매물현황 페이지
+userEditInfo.jsp			> 마이페이지 - 회원정보 수정 로그인 확인 페이지
+changeMyInfo.jsp			> 마이페이지 - 회원정보 수정 페이지 
+userRemove.jsp				> 마이페이지 - 회원탈퇴 로그인 확인 페이지
+
+개인회원 MYPAGE VIEW
+userMypage.jsp				> 마이페이지 - 내차사기 주문관리
+userMypage_orderMySell.jsp	> 마이페이지 - 내차팔기 주문관리
+userEditInfo.jsp			> 마이페이지 - 회원정보 수정 로그인 확인 페이지
+changeMyInfo.jsp			> 마이페이지 - 회원정보 수정 페이지 
+userRemove.jsp				> 마이페이지 - 회원탈퇴 로그인 확인 페이지
+
+관리자 MYPAGE VIEW
+adminPage.jsp				> 마이페이지 - 회원관리 페이지
+adminSellerPageList.jsp		> 마이페이지 - 매물현황 페이지
+adminEditUserInfo			> 마이페이지 - 회원관리 - 회원정보수정 페이지
+send_mail.jsp				> 마이페이지 - 회원관리 - 회원정보수정 - 이메일발송 페이지 
+
+내차사기 VIEW
+carList.jsp					>	내차사기 - 차량 리스트 목록 페이지
+carDetail.jsp				>	내차사기 - 차량 상세보기 페이지
+
+내차팔기 VIEW
+addSellCar_ForCitizen.jsp	>	내차팔기 페이지
+addSellCarList.jsp 			>	매매회원 전용 매물등록 페이지
+addSellCarList_forAdmin		>	관리자    전용 매물등록 페이지
+
+공지사항 VIEW
+noticeBoard.jsp				>	공지사항 게시글 리스트 페이지
+noticeBoard_Detail			>	공지사항 게시글 상세보기 페이지
+noticeBoard_Write			>	공지사항 글작성 페이지
+noticeBoard_Edit			>	공지사항 글수정 페이지
+
+고객후기 VIEW
+reviewBoard.jsp				>	고객후기 게시글 리스트 페이지
+reviewBoard_Detail			>	고객후기 게시글 상세보기 페이지
+reviewBoard_Write			>	고객후기 글작성 페이지
+reviewBoard_Edit			>	고객후기 글수정 페이지
+
+ACTION
+JoinAction.java				>	회원가입 처리 Action 클래스
+LoginAction.java			>	로그인 처리 Action 클래스
+AdminLogin.java				>	관리자 로그인 처리 Action 클래스
+LogoutAction.java			>	로그아웃 처리 Action 클래스
+CheckAcs.java				>	로그인 검증 처리 Action 클래스
+CheckOverlapEmail.java		>	이메일 중복 검사 Action 클래스
+CheckOverlapId.java			>	아이디 중복 검사 Action 클래스			>	
+userFindIDAction.java		>	아이디찾기 처리 Action 클래스
+userFindPWAction.java		>	비밀번호찾기 처리 Action 클래스
+userChangeInfoAction.java	>	회원정보수정 처리 Action 클래스
+userChangePWAction.java		>	비밀번호변경 처리 Action 클래스
+userRemove.java				>	회원탈퇴 처리 Action 클래스
+userList.java				>	유저리스트 출력 Action 클래스
+
+AddListFinal.java			>	매매회원 전용 차량 등록 처리 Action 클래스
+AddListFinal_Admin.java		>	관리자    전용 차량 등록 처리 Action 클래스
+
+AddSellerList.java			>	판매등록 처리 Action 클래스
+BuyCar.java					>	구매신청 처리 Action 클래스
+CarDetail.java				>	차량 상세보기 처리 Action 클래스
+CarListAjax.java			> 	차량 리스트 업데이트 클래스 
+
+NoticeList.java				>	공지사항 게시글 리스트 출력 Action 클래스
+NoticeListSearch.java		>	공지사항 게시글 검색 처리 Action 클래스
+NoticeListSearchOption.java	>	공지사항 페이징 처리 Action 클래스
+NoticeWrite.java			>	공지사항 게시글 작성 처리 Action 클래스
+NoticeEdit.java				>	공지사항 게시글 수정 처리 Action 클래스
+NoticeDetail.java			>	공지사항 게시글 상세보기 Action 클래스
+NoticeDelete.java			>	공지사항 게시글 삭제 처리 Action 클래스
+ReviewList.java				>	고객후기 게시글 리스트 출력 Action 클래스
+ReviewWrite.java			>	고객후기 게시글 작성 처리 Action 클래스
+ReviewEdit.java				>	고객후기 게시글 수정 처리 Action 클래스
+ReviewDetail.java			>	고객후기 게시글 상세보기 Action 클래스
+ReviewRemove.java			>	고객후기 게시글 삭제 처리 Action 클래스
+SendEmail.java				>	이메일 발송 처리 Action 클래스
+
+
+
+
+
+
+
+ 
+
+

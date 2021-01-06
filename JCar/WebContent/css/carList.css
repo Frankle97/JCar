@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+<style>
+#search_condition #input_model {
+	display: inline;
+	width: 30%;
+	height: 45px;
+	margin-left: -2%;
+	float: left;
+	background-color: #F4F4F4;
+	border-radius: 5px;
+	padding: 0 50px 0 20px;
+	box-sizing: border-box;
+	border: 0;
+	line-height: 55px;
+	width: 270px;
+	height: 55px;
+	color: #555;
+	font-size: 14px;
+	cursor:text;
+}
+
+h2 {
+	font-size: 22px;
+	text-transform: uppercase;
+	color: #111111;
+	font-weight: normal;
+	margin-bottom: 15px;
+	letter-spacing: -0.5px;
+	line-height: 1.4em;
+}
+
+hr {
+	margin-top: -20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+
+#searc {
+	background-color: #F4F4F4;
+	border-color: #FFFFFF;
+	margin-left: -16%;
+	margin-top: 9px;
+	height: 34px;
+	width: 38px;
+	border: 0;
+	outline: 0;
+}
+
+
+
+#search_import_tab {
+	margin-left: -8%;
+	margin-top:9%;
+}
+
+#search_category_btn_up, #search_category_btn_down, #search_maker_model_btn_up, #search_maker_model_btn_down, #search_birth_btn_up, #search_birth_btn_down, #search_km_btn_up, #search_km_btn_down, #search_price_btn_up, #search_price_btn_down, #search_color_btn_up, #search_color_btn_down, #search_fuel_btn_up, #search_fuel_btn_down, #search_mission_btn_up, #search_mission_btn_down, #search_options_btn_up, #search_options_btn_down {
+	margin-left: -19px;
+	margin-top: 7px;
+	cursor: pointer;
+}
+
+#search_category_content {
+	background-color: #ffffff;
+	width: 83%;
+}
+
+.lb_check{
+background-color:#FFFFFF;
+text-align:center;
+}
+#category_all {
+background-color: #FFFFFF;
+color: #dc232d;
+font-size: 20px;
+font-weight: bold;
+width:56px;
+margin-left:25px;
+border: 0;
+outline: 0;
+text-decoration: none;
+}
+#category_home, #category_import {
+background-color: #FFFFFF;
+	color: #BBBBBB;
+	font-size: 20px;
+	font-weight: bold;
+	width:79px;
+	border: 0;
+	outline: 0;
+	text-decoration: none;
+}
+.lb_check {
+font-weight:normal;
+color:#555;
+cursor:pointer;
+}
+.birth_min, .km_min, .price_min {
+width: 90%;
+    border-radius: 0px;
+    margin-left: -2%;
+    margin-top: 10%;
+    cursor:pointer;
+
+}
+.birth_max, .km_max, .price_max {
+width: 80%;
+    border-radius: 0px;
+    margin-left: -10%;
+    margin-top: 9%;
+    cursor:pointer;
+}
+.birth_center, .km_center, .price_center {
+width: 0;
+    margin-top: 5%;
+    margin-left: -9%;
+}
+.table-bordered {
+    border: 1px solid #ddd;
+    margin-top: 5%;
+    cursor: pointer;
+    width: 260px;
+    height: 40px;
+}
+.chkbox_category, .chkbox_color, .chkbox_fuel, .chkbox_mission {
+visibility:hidden;
+}
+.showCarList img {
+    width: 200px;
+    height: 130px;
+}
+.carName {
+color:#111;
+font-weight:bold;
+}
+
+a#carName {
+    color: #111;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left:3%;
+}
+a:hover {
+text-decoration:underline;
+}
+#car_desc, #car_km, #car_fuel, #car_city, #car_accident {
+    margin-left: 3%;
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+}
+input#search_seller {
+    display: inline;
+        width: 22%;
+
+    margin-left: 63%;
+    cursor:text;
+}
+input {
+cursor:pointer;
+}
+</style>

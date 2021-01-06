@@ -20,8 +20,8 @@
 * 오픈소스 API에 가까워지기 위해 카카오 지도, 다음 우편번호 API를 구현하였습니다. 
 
 ### 프로젝트 시연 
-* **[바로가기]**(http://tieotdsf1324.cafe24.com/port/car.do)
-* **[동영상]**(https://youtu.be/PxTwLjiz0oc)
+* **[바로가기](http://tieotdsf1324.cafe24.com/port/car.do)**
+* **[동영상](https://youtu.be/PxTwLjiz0oc)**
 
  
  

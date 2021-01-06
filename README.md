@@ -4,11 +4,11 @@
 * [K Car](http://kcar.com)를 모티브 하여 1인 기획 및 개발하였습니다. 
 
 
-### 사용 기술
-* Language : Java, JSP, html, css, Javascript, Ajax, jQuery, Spring
-* Database : MySql 5.7
-* Version  : jdk 8.0 / Tomcat 8.5
-* IDE      : Eclipse
+## 사용 기술
+* **Language** : Java, JSP, html, css, Javascript, Ajax, jQuery, Spring
+* **Database** : MySql 5.7
+* **Version**  : jdk 8.0 / Tomcat 8.5
+* **IDE**      : Eclipse
 
 ## 기획의도
 * 웹 접근성과 웹 표준을 준수하였습니다.
@@ -20,8 +20,8 @@
 * 오픈소스 API에 가까워지기 위해 카카오 지도, 다음 우편번호 API를 구현하였습니다. 
 
 ### 프로젝트 시연 
-* [바로가기](http://tieotdsf1324.cafe24.com/port/car.do)
-* [동영상](https://youtu.be/PxTwLjiz0oc)
+* **[바로가기](http://tieotdsf1324.cafe24.com/port/car.do)**
+* **[동영상](https://youtu.be/PxTwLjiz0oc)**
 
  
  

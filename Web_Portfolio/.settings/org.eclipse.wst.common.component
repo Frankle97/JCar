@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Web_Portfolio">
+        
+    <wb-module deploy-name="JCar">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/Web_Portfolio/build/classes"/>
-        <property name="context-root" value="Web_Portfolio"/>
+                
+        <property name="java-output-path" value="/JCar/build/classes"/>
+        <property name="context-root" value="JCar"/>
+            
     </wb-module>
+    
 </project-modules>

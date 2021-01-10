@@ -1,5 +1,5 @@
 # J Car
-                                                [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgjbae1212%2Fhit-counter)](https://hits.seeyoufarm.com)                    
+                   
 ## 개요
 * [K Car](http://kcar.com)를 모티브 하여 1인 기획 및 개발하였습니다. 
 

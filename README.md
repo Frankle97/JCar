@@ -5,7 +5,7 @@
 
 
 ## 사용 기술
-* **Language** : Java, JSP, html, css, Javascript, Ajax, jQuery, Spring
+* **Language** : Java, JSP, Spring, html, css, Javascript, Ajax, jQuery 
 * **Database** : MySql 5.7
 * **Version**  : jdk 8.0 / Tomcat 8.5
 * **IDE**      : Eclipse

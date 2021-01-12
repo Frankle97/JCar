@@ -1,17 +1,15 @@
 package com.jyeob.dto;
 
 public class ReviewDto {
-	private String writer,title,content,date,image,model;
-	private int no,hits;
-	
-	
-	@Override
-	public String toString() {
-		return "ReviewDto [writer=" + writer + ", title=" + title + ", content=" + content + ", date=" + date
-				+ ", image=" + image + ", model=" + model + ", hits=" + hits + "]";
-	}
-	
-	
+	private String writer;
+	private String title;
+	private String content;
+	private String date;
+	private String image;
+	private String model;
+	private int no;
+	private int hits;
+		
 	public ReviewDto(String writer, String title, String content, String date, String image, String model, int no,
 			int hits) {
 		super();
@@ -79,7 +77,9 @@ public class ReviewDto {
 		this.hits = hits;
 	}
 	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "ReviewDto [writer=" + writer + ", title=" + title + ", content=" + content + ", date=" + date
+				+ ", image=" + image + ", model=" + model + ", hits=" + hits + "]";
+	}
 }

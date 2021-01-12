@@ -45,11 +45,11 @@ public class AdminLogin extends HttpServlet {
 		}
 		if (dto.getId() != null) {
 			Cookie cookie = new Cookie("id", "admin");
-			cookie.setMaxAge(60*30);
+			cookie.setMaxAge(60 * 30);
 			response.addCookie(cookie);
 		} 
 			out.println("<script> alert('관리자로그인 성공');");
-			out.println("location.href='"+request.getContextPath()+"/car.do'; </script>");
+			out.println("location.href='" + request.getContextPath() + "/car.do'; </script>");
 		
 	}
 

@@ -21,9 +21,10 @@ public class CheckAcs implements Action{
 		MemberDto dto = new MemberDao().login(request.getParameter("id"), request.getParameter("password"));
 		
 		if (dto.getId() == null) {
-			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); location.href='"+request.getContextPath()+"/myPageView.do?id="+request.getParameter("id")+"'; </script>");
+			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); "
+					+ "location.href='" + request.getContextPath() + "/myPageView.do?id=" + request.getParameter("id") + "'; </script>");
 		} else {
-			out.println("<script>location.href='"+request.getContextPath()+"/changeMyInfo.do?id="+dto.getId()+"'; </script>");
+			out.println("<script>location.href='" + request.getContextPath() + "/changeMyInfo.do?id=" + dto.getId() + "'; </script>");
 		}
 	}
 		

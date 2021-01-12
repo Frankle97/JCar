@@ -40,7 +40,9 @@ public class CountModels extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String sql = "select model, count(model) from carlist where maker like ? group by model";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		
 		try {
 			conn = new DBManager().getConnection();
@@ -62,9 +64,28 @@ public class CountModels extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn != null) {
+				try{
+					conn.close();
+					}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try{
+					pstmt.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (rset != null) {
+				try{
+					rset.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

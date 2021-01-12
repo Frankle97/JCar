@@ -28,13 +28,13 @@ public class LoginAction implements Action{
 		}
 		if (dto.getId() != null) {
 			Cookie cookie = new Cookie("id", request.getParameter("id"));
-			cookie.setMaxAge(60*30);
+			cookie.setMaxAge(60 * 30);
 			response.addCookie(cookie);
 		} 
 		if (dto.getId() != null) {
-			out.println("<script>location.href='"+request.getContextPath()+"/car.do'; </script>");
+			out.println("<script>location.href='" + request.getContextPath() + "/car.do'; </script>");
 		} else {
-			out.println("<script>alert('등록되지 않은 아이디이거나 비밀번호가 일치하지 않습니다.'); location.href='"+request.getContextPath()+"/loginView.do'; </script>");
+			out.println("<script>alert('등록되지 않은 아이디이거나 비밀번호가 일치하지 않습니다.'); location.href='" + request.getContextPath() + "/loginView.do'; </script>");
 		}
 	}
 

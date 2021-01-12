@@ -19,7 +19,7 @@ public class UserFindPWAction implements Action {
 		int res = new MemberDao().findMyPW(request.getParameter("id"), request.getParameter("name"));
 		
 		if (res > 0) {
-			out.println("<script>location.href='"+request.getContextPath()+"/findPW_suc.do?no="+res+"'; </script>");
+			out.println("<script>location.href='" + request.getContextPath() + "/findPW_suc.do?no=" + res + "'; </script>");
 		} else {
 			out.println("<script>alert('입력하신 정보와 일치하는 정보를 찾을 수 없습니다.다시 입력해주세요.'); history.go(-1); </script>");
 		}

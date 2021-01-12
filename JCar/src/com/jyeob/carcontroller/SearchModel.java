@@ -42,12 +42,14 @@ public class SearchModel extends HttpServlet {
 		
 		String sql = "select * from carlist where detail like ? or maker like ?";
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+request.getParameter("detail")+"%");
-			pstmt.setString(2, "%"+request.getParameter("detail")+"%");
+			pstmt.setString(1, "%" + request.getParameter("detail") + "%");
+			pstmt.setString(2, "%" + request.getParameter("detail") + "%");
 			rset = pstmt.executeQuery();
 			JsonArray list = new JsonArray();
 			while (rset.next()) {

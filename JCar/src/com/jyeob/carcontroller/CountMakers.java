@@ -40,69 +40,101 @@ public class CountMakers extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String country = request.getParameter("country");
 	
-		
-		
-			if (!(country.equals("전체"))) {
-				PrintWriter out = response.getWriter();
-				DBManager db = new DBManager();
-				String sql = "select maker, count(*) from carlist where country like ? group by maker order by count(*) desc";
-				Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
-				try {
-					conn = db.getConnection();
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, request.getParameter("country"));
-					rset = pstmt.executeQuery();
-					JsonArray list = new JsonArray();
-					while(rset.next()) {
-						JsonObject obj = new JsonObject();
-						obj.addProperty("maker", rset.getString(1));
-						obj.addProperty("cnt", rset.getInt(2));
-						list.add(obj);
-					}
-					Gson gson = new Gson();
-					JsonObject menu = new JsonObject();
-					menu.add("menu", list);
-					out.println(gson.toJson(menu));
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-					if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-					if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+		if (!(country.equals("전체"))) {
+			PrintWriter out = response.getWriter();
+			DBManager db = new DBManager();
+			String sql = "select maker, count(*) from carlist where country like ? group by maker order by count(*) desc";
+			Connection conn = null; 
+			PreparedStatement pstmt = null; 
+			ResultSet rset = null;
+			try {
+				conn = db.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, request.getParameter("country"));
+				rset = pstmt.executeQuery();
+				JsonArray list = new JsonArray();
+				while(rset.next()) {
+					JsonObject obj = new JsonObject();
+					obj.addProperty("maker", rset.getString(1));
+					obj.addProperty("cnt", rset.getInt(2));
+					list.add(obj);
 				}
-			} else {
-				PrintWriter out = response.getWriter();
-				DBManager db = new DBManager();
-				String sql = "select maker, count(*) from carlist group by maker order by count(*) desc";
-				Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
-				try {
-					conn = db.getConnection();
-					pstmt = conn.prepareStatement(sql);
-					rset = pstmt.executeQuery();
-					JsonArray list = new JsonArray();
-					while(rset.next()) {
-						JsonObject obj = new JsonObject();
-						obj.addProperty("maker", rset.getString(1));
-						obj.addProperty("cnt", rset.getInt(2));
-						list.add(obj);
+				Gson gson = new Gson();
+				JsonObject menu = new JsonObject();
+				menu.add("menu", list);
+				out.println(gson.toJson(menu));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (conn != null) {
+					try{
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					Gson gson = new Gson();
-					JsonObject menu = new JsonObject();
-					menu.add("menu", list);
-					out.println(gson.toJson(menu));
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-					if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-					if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
 				}
-				
+				if (pstmt != null) {
+					try{
+						pstmt.close();
+					} catch(Exception e) {
+						e.printStackTrace();}
+					}
+				if (rset != null) {
+					try{
+						rset.close();
+					} catch (Exception e) {
+						e.printStackTrace();}
+				}
 			}
+		} else {
+			PrintWriter out = response.getWriter();
+			DBManager db = new DBManager();
+			String sql = "select maker, count(*) from carlist group by maker order by count(*) desc";
+			Connection conn = null; 
+			PreparedStatement pstmt = null; 
+			ResultSet rset = null;
+			try {
+				conn = db.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				JsonArray list = new JsonArray();
+				while(rset.next()) {
+					JsonObject obj = new JsonObject();
+					obj.addProperty("maker", rset.getString(1));
+					obj.addProperty("cnt", rset.getInt(2));
+					list.add(obj);
+				}
+				Gson gson = new Gson();
+				JsonObject menu = new JsonObject();
+				menu.add("menu", list);
+				out.println(gson.toJson(menu));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (conn != null) {
+					try{
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();}
+					}
+				if (pstmt != null) {
+					try{
+						pstmt.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (rset != null) {
+					try{
+						rset.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}	
 		}
+	}
 			
-	
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -115,26 +147,28 @@ public class CountMakers extends HttpServlet {
 		
 		String[] arr = request.getParameter("category").split("/");
 		String qq = "";
-		for (int i=0; i<arr.length; i++) {
-			if (i!=arr.length-1) {
-				qq+="?,";
+		for (int i = 0; i < arr.length; i++) {
+			if (i != arr.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
 		
 		if (!(country.equals("전체"))) {
 			
 			DBManager db = new DBManager();
-			String sql = "select maker, count(*) from carlist where category in ("+qq+") and country like ? group by maker order by count(*) desc";
-			Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+			String sql = "select maker, count(*) from carlist where category in (" + qq + ") and country like ? group by maker order by count(*) desc";
+			Connection conn = null; 
+			PreparedStatement pstmt = null; 
+			ResultSet rset = null;
 			try {
 				conn = db.getConnection();
 				pstmt = conn.prepareStatement(sql);
-				for (int i=0; i<arr.length; i++) {
-					pstmt.setString((i+1), arr[i]);
-					if (i==arr.length-1) {
-						pstmt.setString((i+2), country);
+				for (int i=0; i < arr.length; i++) {
+					pstmt.setString((i + 1), arr[i]);
+					if (i == arr.length - 1) {
+						pstmt.setString((i + 2), country);
 					}
 				}
 				rset = pstmt.executeQuery();
@@ -152,19 +186,38 @@ public class CountMakers extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-				if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-				if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+				if (conn != null) {
+					try{conn.close();
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (pstmt != null) {
+					try{
+						pstmt.close();
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (rset != null) {
+					try{
+						rset.close();
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		} else {
 			DBManager db = new DBManager();
-			String sql = "select maker, count(*) from carlist where category in ("+qq+") group by maker order by count(*) desc";
-			Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+			String sql = "select maker, count(*) from carlist where category in (" + qq + ") group by maker order by count(*) desc";
+			Connection conn = null; 
+			PreparedStatement pstmt = null; 
+			ResultSet rset = null;
 			try {
 				conn = db.getConnection();
 				pstmt = conn.prepareStatement(sql);
-				for (int i=0; i<arr.length; i++) {
-					pstmt.setString((i+1), arr[i]);
+				for (int i = 0; i < arr.length; i++) {
+					pstmt.setString((i + 1), arr[i]);
 				}
 				rset = pstmt.executeQuery();
 				JsonArray list = new JsonArray();
@@ -181,12 +234,30 @@ public class CountMakers extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-				if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-				if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+				if (conn != null) {
+					try{
+						conn.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (pstmt != null) {
+					try{
+						pstmt.close();
+					}
+					catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (rset != null) {
+					try{
+						rset.close();
+					}
+					catch (Exception e) {
+					e.printStackTrace();
+					}
+				}
 			}
-			
 		}
 	}
-
 }

@@ -20,9 +20,10 @@ public class MypageBringSell implements Action{
 		String id = request.getParameter("id");
 		int res = new SellerDao().updateSellList(no, id);
 		if (res > 0) {
-			out.println("<script> location.href='"+request.getContextPath()+"/sellerMyPage.do?id="+id+"'; </script>");
+			out.println("<script> location.href='" + request.getContextPath() + "/sellerMyPage.do?id=" + id + "'; </script>");
 		} else {
-			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); location.href='"+request.getContextPath()+"/sellerMyPage.do?id="+request.getParameter("id")+"';</script>");
+			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); "
+					+ "location.href='" + request.getContextPath() + "/sellerMyPage.do?id=" + request.getParameter("id") + "';</script>");
 		}
 	}
 

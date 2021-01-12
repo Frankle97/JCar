@@ -42,23 +42,23 @@ public class CarListMakers extends HttpServlet {
 		String country = request.getParameter("country");
 		String[] maker = request.getParameter("maker").split("/");
 		String qq = "";
-		for (int i=0; i<maker.length; i++) {
-			if (i!=maker.length-1) {
-				qq+="?,";
+		for (int i = 0; i < maker.length; i++) {
+			if (i != maker.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
 	
 		String sql = "select * from carlist";
 		if (country.equals("국산")) {
-			sql = "select * from carlist where country like '국산' and  maker in ("+qq+")";
+			sql = "select * from carlist where country like '국산' and  maker in (" + qq + ")";
 		} else if (country.equals("수입")) {
-			sql = "select * from carlist where country like '수입' and  maker in ("+qq+")";
+			sql = "select * from carlist where country like '수입' and  maker in (" + qq + ")";
 		} else if (country.equals("전체")) {
-			sql = "select * from carlist where maker in ("+qq+")";
+			sql = "select * from carlist where maker in (" + qq + ")";
 		} 
-		if (maker[0]=="") {
+		if (maker[0] == "") {
 			if (country.equals("국산")) {
 				sql = "select * from carlist where country like '국산'";
 			} else if (country.equals("수입")) {
@@ -67,13 +67,15 @@ public class CarListMakers extends HttpServlet {
 				sql = "select * from carlist";
 			} 
 		}
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			if (maker[0] != "") {
-				for (int i=0; i<maker.length; i++) {
-					pstmt.setString((i+1), maker[i]);
+				for (int i = 0; i < maker.length; i++) {
+					pstmt.setString((i + 1), maker[i]);
 				}
 			}
 			rset = pstmt.executeQuery();
@@ -129,50 +131,54 @@ public class CarListMakers extends HttpServlet {
 		String[] maker = request.getParameter("maker").split("/");
 		String[] category = request.getParameter("category").split("/");
 		String qq = "";
-		for (int i=0; i<maker.length; i++) {
-			if (i!=maker.length-1) {
-				qq+="?,";
+		for (int i = 0; i < maker.length; i++) {
+			if (i != maker.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String qq2="";
-		for (int i=0; i<category.length; i++) {
-			if (i!=category.length-1) {
-				qq2+="?,";
+		String qq2 = "";
+		for (int i = 0; i < category.length; i++) {
+			if (i != category.length - 1) {
+				qq2 += "?,";
 			} else {
-				qq2+="?";
+				qq2 += "?";
 			}	
 		}
 	
-		String sql = "select * from carlist category in ("+qq2+")";
+		String sql = "select * from carlist category in (" + qq2 + ")";
 		if (country.equals("국산")) {
-			sql = "select * from carlist where country like '국산' and  maker in ("+qq+") and category in ("+qq2+")";
+			sql = "select * from carlist where country like '국산' and  maker in (" + qq + ") and category in (" + qq2 + ")";
 		} else if (country.equals("수입")) {
-			sql = "select * from carlist where country like '수입' and  maker in ("+qq+") and category in ("+qq2+")";
+			sql = "select * from carlist where country like '수입' and  maker in (" + qq + ") and category in (" + qq2 + ")";
 		} else if (country.equals("전체")) {
-			sql = "select * from carlist where maker in ("+qq+") and category in ("+qq2+")";
+			sql = "select * from carlist where maker in (" + qq + ") and category in (" + qq2 + ")";
 		} 
 		if (maker[0] == "") {
-			sql = "select * from carlist where category in ("+qq2+")";
+			sql = "select * from carlist where category in (" + qq2 + ")";
 		}
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int tmpt = 0;
 			if (maker[0] != "") {
-				for (int i=0; i<maker.length; i++) {
-					pstmt.setString((i+1), maker[i]);
-					if (i==maker.length-1) {tmpt=i+1;}
+				for (int i = 0; i < maker.length; i++) {
+					pstmt.setString((i + 1), maker[i]);
+					if (i == maker.length - 1) {
+						tmpt = i + 1;
+					}
 				}
 				
-				for (int i=0; i<category.length; i++) {
-					pstmt.setString((tmpt+(i+1)), category[i]);
+				for (int i = 0; i < category.length; i++) {
+					pstmt.setString((tmpt + (i + 1)), category[i]);
 				}
 			} else {
-				for (int i=0; i<category.length; i++) {
-					pstmt.setString((i+1), category[i]);
+				for (int i = 0; i < category.length; i++) {
+					pstmt.setString((i + 1), category[i]);
 				}
 			}
 			

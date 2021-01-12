@@ -30,11 +30,13 @@ public class NoticeList implements Action{
 		}
 		list = dao.list10(pstartno);
 		int bottomList = 10;
-		int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-		int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
+		int bottom_current = (int)Math.ceil((pstartno + 1)/(float)onepageLimit);
+		int bottom_start = (int)Math.floor(((bottom_current - 1)/(float)bottomList)) * bottomList + 1;
 
-		int bottom_end=bottom_start+bottomList-1;
-		if (pageAll < bottom_end) {bottom_end = pageAll;} 
+		int bottom_end = bottom_start + bottomList-1;
+		if (pageAll < bottom_end) 
+		{bottom_end = pageAll;
+		} 
 		
 		request.setAttribute("chk", 1);
 		request.setAttribute("cnt", pageTotal);

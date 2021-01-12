@@ -23,17 +23,18 @@ public class UserRemove implements Action{
 			String cookie = request.getHeader("Cookie");
 			if (cookie != null) {
 				Cookie[] cookies = request.getCookies();	
-				for (int i=0; i<cookies.length; i++) {
+				for (int i = 0; i < cookies.length; i++) {
 					if (cookies[i].getName().equals("id")) {
 						cookies[i].setMaxAge(0);
 						response.addCookie(cookies[i]);
 						break;
 					}
 				}
-				}
-			out.println("<script>alert('탈퇴가 완료되었습니다.'); location.href='"+request.getContextPath()+"/car.do'; </script>");	
+			}
+			out.println("<script>alert('탈퇴가 완료되었습니다.'); location.href='" + request.getContextPath() + "/car.do'; </script>");	
 		} else {
-			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); location.href='"+request.getContextPath()+"/myPageView.do?id="+request.getParameter("id")+"'; </script>");
+			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); location.href='" + request.getContextPath() + "/myPageView.do"
+					+ "?id=" + request.getParameter("id") + "'; </script>");
 		}
 		
 	}

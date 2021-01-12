@@ -2,7 +2,58 @@ package com.jyeob.dto;
 
 public class MemberDto {
 	private int no;
-	private String name,birth,gender,id,password,contact,email,ip,date,address, category,cart;
+	private String name;
+	private String birth;
+	private String gender;
+	private String id;
+	private String password;
+	private String contact;
+	private String email;
+	private String ip;
+	private String date;
+	private String address;
+	private String category;
+	private String cart;
+	
+	public MemberDto() {
+		super();
+	}
+	
+	public MemberDto(int no, String name, String birth, String gender, String id, String password, String contact,
+			String email, String ip, String date, String address, String category) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.id = id;
+		this.password = password;
+		this.contact = contact;
+		this.email = email;
+		this.ip = ip;
+		this.date = date;
+		this.address = address;
+		this.category=category;
+	}
+	
+	public MemberDto(int no, String name, String birth, String gender, String id, String password, String contact,
+			String email, String ip, String date, String address, String category, String cart) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.id = id;
+		this.password = password;
+		this.contact = contact;
+		this.email = email;
+		this.ip = ip;
+		this.date = date;
+		this.address = address;
+		this.category=category;
+		this.cart = cart;
+	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -89,42 +140,7 @@ public class MemberDto {
 				+ ", password=" + password + ", contact=" + contact + ", email=" + email + ", ip=" + ip + ", date="
 				+ date + ", address=" + address + category + cart + "]";
 	}
-	public MemberDto() {
-		
-	}
-	public MemberDto(int no, String name, String birth, String gender, String id, String password, String contact,
-			String email, String ip, String date, String address, String category) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.birth = birth;
-		this.gender = gender;
-		this.id = id;
-		this.password = password;
-		this.contact = contact;
-		this.email = email;
-		this.ip = ip;
-		this.date = date;
-		this.address = address;
-		this.category=category;
-	}
-	public MemberDto(int no, String name, String birth, String gender, String id, String password, String contact,
-			String email, String ip, String date, String address, String category, String cart) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.birth = birth;
-		this.gender = gender;
-		this.id = id;
-		this.password = password;
-		this.contact = contact;
-		this.email = email;
-		this.ip = ip;
-		this.date = date;
-		this.address = address;
-		this.category=category;
-		this.cart = cart;
-	}
+
 	
 	
 	

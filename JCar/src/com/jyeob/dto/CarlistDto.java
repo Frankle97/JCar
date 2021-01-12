@@ -1,9 +1,28 @@
 package com.jyeob.dto;
 
 public class CarlistDto {
-	private int no, birth, km, price;
-	private String country, maker, category, model, detail, color, fuel, mission, options, accident, seater, 
-			city, writer, ip, date, image, content, status;
+	private int no; 
+	private int birth;
+	private int km;
+	private int price;
+	private String country;
+	private String maker;
+	private String category;
+	private String model;
+	private String detail;
+	private String color; 
+	private String fuel;
+	private String mission;
+	private String options;
+	private String accident;
+	private String seater;
+	private String city;
+	private String writer;
+	private String ip;
+	private String date;
+	private String image;
+	private String content;
+	private String status;
 
 	public CarlistDto() {
 		super();
@@ -83,15 +102,6 @@ public class CarlistDto {
 		this.ip = ip;
 		this.image = image;
 		this.content = content;
-	}
-
-	@Override
-	public String toString() {
-		return "CarlistDto [no=" + no + ", birth=" + birth + ", km=" + km + ", price=" + price + ", country=" + country
-				+ ", maker=" + maker + ", category=" + category + ", model=" + model + ", detail=" + detail + ", color="
-				+ color + ", fuel=" + fuel + ", mission=" + mission + ", options=" + options + ", accident=" + accident
-				+ ", seater=" + seater +  ", city=" + city + ", writer=" + writer + ", ip=" + ip
-				+ ", date=" + date + ", image=" + image + ", content=" + content + "]";
 	}
 
 	public int getNo() {
@@ -214,8 +224,6 @@ public class CarlistDto {
 		this.seater = seater;
 	}
 
-	
-
 	public String getCity() {
 		return city;
 	}
@@ -270,6 +278,15 @@ public class CarlistDto {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	@Override
+	public String toString() {
+		return "CarlistDto [no=" + no + ", birth=" + birth + ", km=" + km + ", price=" + price + ", country=" + country
+				+ ", maker=" + maker + ", category=" + category + ", model=" + model + ", detail=" + detail + ", color="
+				+ color + ", fuel=" + fuel + ", mission=" + mission + ", options=" + options + ", accident=" + accident
+				+ ", seater=" + seater +  ", city=" + city + ", writer=" + writer + ", ip=" + ip
+				+ ", date=" + date + ", image=" + image + ", content=" + content + "]";
 	}
 
 }

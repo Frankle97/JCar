@@ -21,7 +21,7 @@ public class MypageRemoveSell implements Action{
 		int res = new SellerDao().removeOrder(no);
 		new CarDao().removeCar(no);
 		if (res > 0) {
-			out.println("<script> alert('삭제완료'); location.href='"+request.getContextPath()+"/adminSellerList.do?id=admin'; </script>");
+			out.println("<script> alert('삭제완료'); location.href='" + request.getContextPath() + "/adminSellerList.do?id=admin'; </script>");
 		} else {
 			out.println("<script>alert('에러가 발생하였습니다. 관리자에게 문의해주세요.); history.go(-1); </script>");
 		}

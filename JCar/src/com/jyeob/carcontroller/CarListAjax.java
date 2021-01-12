@@ -42,19 +42,19 @@ public class CarListAjax extends HttpServlet {
 		CarDao dao = new CarDao();
 		PrintWriter out = response.getWriter();
 		String country = request.getParameter("country");
-		String qq= "";
+		String qq = "";
 		int cnt = 0;
 		String[] list3 = null;
 		
 		if (request.getParameter("list") != null) {
-			cnt=0;
+			cnt = 0;
 			list3 = request.getParameter("list").split("/");
-			for (int i=0; i<list3.length; i++) {
+			for (int i=0; i < list3.length; i++) {
 				cnt++;				
-				if (i!=list3.length-1) {
-					qq+="?,";
+				if (i != list3.length - 1) {
+					qq += "?,";
 				} else {
-					qq+="?";
+					qq += "?";
 				}	
 			}
 		}
@@ -72,27 +72,27 @@ public class CarListAjax extends HttpServlet {
 			sql2 = "select * from carlist where country like '국산'";
 			cnt = dao.calcCnt("select count(*) from carlist where country like '국산'");
 			if (request.getParameter("list") != null) { 
-				sql = "select * from carlist where country like '국산' and no in ("+qq+") limit ?, 10";
-				sql2 += " and no in ("+qq+")";
+				sql = "select * from carlist where country like '국산' and no in (" + qq + ") limit ?, 10";
+				sql2 += " and no in (" + qq + ")";
 			}
 			
 		} else if (country.equals("수입")) {
 			sql = "select * from carlist where country like '수입' limit ?, 10";
 			sql2 = "select * from carlist where country like '수입'";
 			if (request.getParameter("list") != null) { 
-				sql = "select * from carlist where country like '수입' and no in ("+qq+") limit ?, 10";
-				sql2 += " and no in ("+qq+")"; }
+				sql = "select * from carlist where country like '수입' and no in (" + qq + ") limit ?, 10";
+				sql2 += " and no in (" + qq + ")"; }
 			cnt = dao.calcCnt("select count(*) from carlist where country like '수입'"); 
 		} else if (country.equals("전체")) {
 			sql = "select * from carlist limit ?, 10";
 			sql2 = "select * from carlist";
 			if (request.getParameter("list") != null) { 
-				sql = "select * from carlist where no in ("+qq+") limit ?, 10";
-				sql2 += " where no in ("+qq+")"; }
-			cnt = dao.calcCnt("select count(*) from carlist");
-		}
+				sql = "select * from carlist where no in (" + qq + ") limit ?, 10";
+				sql2 += " where no in (" + qq + ")"; }
+				cnt = dao.calcCnt("select count(*) from carlist");
+			}
 		if (request.getParameter("list") != null) {
-			cnt=0;
+			cnt = 0;
 			for (int i=0; i<list3.length; i++) {
 				cnt++;				
 			}
@@ -115,7 +115,7 @@ public class CarListAjax extends HttpServlet {
 				JsonObject obj2 = new JsonObject();
 				obj2.addProperty("no", rset2.getInt("no"));
 				list2.add(obj2);
-				}
+			}
 			
 			
 			conn = new DBManager().getConnection();
@@ -206,15 +206,15 @@ public class CarListAjax extends HttpServlet {
 		String[] list = request.getParameter("list").split("/");
 		int start = Integer.parseInt(request.getParameter("minyear").concat("00").substring(2));
 		int end = Integer.parseInt(request.getParameter("maxyear").concat("12").substring(2));
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+") and birth between ? and ?";
+		String sql = "select * from carlist where no in (" + qq + ") and birth between ? and ?";
 		if (list[0] == "") {
 			sql = "select * from carlist where birth between ? and ?";
 		}
@@ -225,11 +225,11 @@ public class CarListAjax extends HttpServlet {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			if (list[0] != "") {
-				for (int i=0; i<list.length; i++) {
-					pstmt.setInt((i+1), Integer.parseInt(list[i]));
-					if (i==list.length-1) {
-						pstmt.setInt(i+2, start);
-						pstmt.setInt(i+3, end);
+				for (int i = 0; i < list.length; i++) {
+					pstmt.setInt((i + 1), Integer.parseInt(list[i]));
+					if (i == list.length - 1) {
+						pstmt.setInt(i + 2, start);
+						pstmt.setInt(i + 3, end);
 					}
 				}
 			} else {

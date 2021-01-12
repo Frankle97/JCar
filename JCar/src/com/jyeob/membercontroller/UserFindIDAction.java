@@ -19,7 +19,8 @@ public class UserFindIDAction implements Action{
 		MemberDto dto = new MemberDao().findMyID(request.getParameter("name"), request.getParameter("email"));
 	
 		if (dto.getId() != null) {
-			out.println("<script>location.href='"+request.getContextPath()+"/findID_suc.do?id="+dto.getId()+"&date="+dto.getDate()+"'; </script>");
+			out.println("<script>location.href='" + request.getContextPath() + "/findID_suc.do"
+					+ "?id=" + dto.getId() + "&date=" + dto.getDate() + "'; </script>");
 		} else {
 			out.println("<script>alert('일치하는 정보를 찾을 수 없습니다.'); history.go(-1); </script>");
 		}

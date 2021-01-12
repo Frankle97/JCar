@@ -13,29 +13,46 @@ public class ReviewDao {
 	public ArrayList<ReviewDto> showAll(){
 		ArrayList<ReviewDto> list = new ArrayList<>();
 		String sql = "select * from reviewboard";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-			list.add(new ReviewDto(rset.getString("writer"), rset.getString("title"), rset.getString("content"), rset.getString("date"), rset.getString("image"), rset.getString("model"), rset.getInt("no"), rset.getInt("hits")));	
+			list.add(new ReviewDto(rset.getString("writer"), 
+					rset.getString("title"), 
+					rset.getString("content"), 
+					rset.getString("date"), 
+					rset.getString("image"), 
+					rset.getString("model"), 
+					rset.getInt("no"), 
+					rset.getInt("hits")));	
 			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try {rset.close();} catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return list;
 	}
+	
 	public int proveUser(String id, int no) {
 		int res = 0;
 		String sql = "select * from reviewboard where writer=? and no=?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -49,17 +66,23 @@ public class ReviewDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try {rset.close();} catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
+	
 	public int RemoveReview(String id, int no) {
 		int res = 0;
 		String sql = "delete from reviewboard where writer=? and no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -70,16 +93,23 @@ public class ReviewDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
-		}
-		
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}	
 		return res;
 	}
+	
 	public int RemoveReviewAdmin(int no) {
 		int res = 0;
 		String sql = "delete from reviewboard where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -89,17 +119,23 @@ public class ReviewDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
 	
 	public int listCnt() {
 		int res = 0;
 		String sql = "select count(*) from reviewboard";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -111,40 +147,62 @@ public class ReviewDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try {rset.close();} catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
 
 	public ArrayList<ReviewDto> list10(int pstartno) {
 		ArrayList<ReviewDto> list = new ArrayList<>();
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		String sql = "select * from reviewboard order by date desc limit ?, 10";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pstartno);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				list.add(new ReviewDto(rset.getString("writer"), rset.getString("title"), rset.getString("content"), rset.getString("date"), rset.getString("image"), rset.getString("model"), rset.getInt("no"), rset.getInt("hits")));
+				list.add(new ReviewDto(rset.getString("writer"), 
+						rset.getString("title"), 
+						rset.getString("content"), 
+						rset.getString("date"), 
+						rset.getString("image"), 
+						rset.getString("model"), 
+						rset.getInt("no"), 
+						rset.getInt("hits")));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try {conn.close();} catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try {pstmt.close();} catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try {rset.close();} catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return list;
 	}
+	
 	public ReviewDto DetailReview(int no) {
 		ReviewDto dto = new ReviewDto();
 		String sql = "select * from reviewboard where no=?";
-		Connection conn = null; PreparedStatement pstmt = null, hitup = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		PreparedStatement hitup = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			hitup = conn.prepareStatement("update reviewboard set hits=hits+1 where no=?");
@@ -168,10 +226,13 @@ public class ReviewDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
-			if (hitup!=null) {try{hitup.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null || hitup != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}
@@ -179,7 +240,9 @@ public class ReviewDao {
 	public int EditReview(ReviewDto dto) {
 		int res = 0;
 		String sql = "update reviewboard set title=?, content=?, image=? where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -192,8 +255,13 @@ public class ReviewDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	} 
@@ -201,7 +269,8 @@ public class ReviewDao {
 	public int writeReview(ReviewDto dto) {
 		int res = 0;
 		String sql = "insert into reviewboard (writer, title, content, image, model) values (?,?,?,?,?)";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -215,10 +284,14 @@ public class ReviewDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
 }

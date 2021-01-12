@@ -1,7 +1,11 @@
 package com.jyeob.dto;
 
 public class StoreDto {
-	private String location, number, x, y, address;
+	private String location;
+	private String number;
+	private String x;
+	private String y;
+	private String address;
 
 	public StoreDto() {
 		super();
@@ -15,12 +19,6 @@ public class StoreDto {
 		this.x = x;
 		this.y = y;
 		this.address = address;
-	}
-
-	@Override
-	public String toString() {
-		return "StoreDto [location=" + location + ", number=" + number + ", x=" + x + ", y=" + y + ", address="
-				+ address + "]";
 	}
 
 	public String getLocation() {
@@ -61,6 +59,12 @@ public class StoreDto {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	@Override
+	public String toString() {
+		return "StoreDto [location=" + location + ", number=" + number + ", x=" + x + ", y=" + y + ", address="
+				+ address + "]";
 	}
 	
 }

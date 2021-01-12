@@ -43,28 +43,30 @@ public class CarListPrice extends HttpServlet {
 		String[] list = request.getParameter("list").split("/");
 		int start = Integer.parseInt(request.getParameter("minprice"));
 		int end = Integer.parseInt(request.getParameter("maxprice"));
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+") and price between ? and ?";
+		String sql = "select * from carlist where no in (" + qq + ") and price between ? and ?";
 		if (list[0] == "") {
 			sql = "select * from carlist where price between ? and ?";
 		}
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			if (list[0] != "") {
-				for (int i=0; i<list.length; i++) {
-					pstmt.setInt((i+1), Integer.parseInt(list[i]));
-					if (i==list.length-1) {
-						pstmt.setInt(i+2, start);
-						pstmt.setInt(i+3, end);
+				for (int i = 0; i < list.length; i++) {
+					pstmt.setInt((i + 1), Integer.parseInt(list[i]));
+					if (i == list.length - 1) {
+						pstmt.setInt(i + 2, start);
+						pstmt.setInt(i + 3, end);
 					}
 				}
 			} else {
@@ -130,11 +132,13 @@ public class CarListPrice extends HttpServlet {
 			String sql = "select * from carlist where maker like ? and price between ? and ? and status!='판매완료'";
 
 			
-			Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+			Connection conn = null; 
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
 			try {
 				conn = new DBManager().getConnection();
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, "%"+maker+"%");
+				pstmt.setString(1, "%" + maker + "%");
 				pstmt.setInt(2, start);
 				pstmt.setInt(3, end);
 				rset = pstmt.executeQuery();

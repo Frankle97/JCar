@@ -44,17 +44,17 @@ public class CarListCategory extends HttpServlet {
 		
 		String[] arr = request.getParameter("category").split("/");
 		String qq = "";
-		for (int i=0; i<arr.length; i++) {
-			if (i!=arr.length-1) {
-				qq+="?,";
+		for (int i = 0; i < arr.length; i++) {
+			if (i != arr.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}
 			
 		}
-		String sql = "select * from carlist where category in ("+qq+") and country like ?";
+		String sql = "select * from carlist where category in (" + qq + ") and country like ?";
 		if (request.getParameter("country").equals("전체")) {
-			sql = "select * from carlist where category in ("+qq+")";
+			sql = "select * from carlist where category in (" + qq + ")";
 		}
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -64,14 +64,16 @@ public class CarListCategory extends HttpServlet {
 			pstmt = conn.prepareStatement(sql);
 
 			if (request.getParameter("country").equals("전체")) {
-				for (int i=0; i<arr.length; i++) { pstmt.setString((i+1), arr[i]); }
+				for (int i = 0; i < arr.length; i++) { 
+					pstmt.setString((i + 1), arr[i]); 
+				}
 			} else {
 				for (int i = 0; i < arr.length; i++) { 
-					pstmt.setString((i+1), arr[i]);
-					if (i==arr.length-1) {
-						pstmt.setString((i+2), request.getParameter("country"));
+					pstmt.setString((i + 1), arr[i]);
+					if (i == arr.length - 1) {
+						pstmt.setString((i + 2), request.getParameter("country"));
 					}
-					}
+				}
 				
 			}
 			

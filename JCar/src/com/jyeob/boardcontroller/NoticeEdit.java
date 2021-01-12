@@ -27,7 +27,7 @@ public class NoticeEdit implements Action{
 		if (new BoardDao().EditNotice(dto) > 0) {
 		out.println("<script>alert('수정이 완료되었습니다.'); location.href='"+request.getContextPath()+"/detailNotice.do?no="+request.getParameter("no")+"'; </script>");	
 		} else {
-			out.println("<script>alert('수정에 실패하였습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");
+		out.println("<script>alert('수정에 실패하였습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");
 		}
 	}
 

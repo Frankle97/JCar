@@ -50,7 +50,10 @@ public class NaverLogin extends HttpServlet {
 	    String code = request.getParameter("code");
 	    String state = request.getParameter("state");
 	    String redirectURI = URLEncoder.encode("http://tieotdsf1324.cafe24.com/port/NaverLogin", "UTF-8");
-	    String apiURL;
+	    String apiURL = null;
+	    String access_token = null;
+	    String inputLine = null;
+	 
 	    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 	    apiURL += "client_id=" + clientId;
 	    apiURL += "&client_secret=" + clientSecret;
@@ -58,41 +61,36 @@ public class NaverLogin extends HttpServlet {
 	    apiURL += "&code=" + code;
 	    apiURL += "&state=" + state;
 	    
-//	    System.out.println("apiURL="+apiURL);
-	    String access_token = null;
-//	    String refresh_token = null;
+	    
+	    
 	    try {
 	      URL url = new URL(apiURL);
 	      HttpURLConnection con = (HttpURLConnection)url.openConnection();
 	      con.setRequestMethod("GET");
 	      int responseCode = con.getResponseCode();
 	      BufferedReader br;
-//	      System.out.print("responseCode="+responseCode);
-	      if(responseCode==200) { // 정상 호출
+	      if(responseCode == 200) { 
 	        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	      } else {  // 에러 발생
+	      } else {  
 	        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 	      }
-	      String inputLine;
 	      StringBuffer res = new StringBuffer();
 	      while ((inputLine = br.readLine()) != null) {
 	        res.append(inputLine);
 	      }
 	      br.close();
-	      if(responseCode==200) {
-//	        System.out.println(res.toString());
+	      if(responseCode == 200) {
 	      }
 	      	JsonParser jsonParser = new JsonParser();
 		    JsonObject job = (JsonObject)jsonParser.parse(res.toString());
 		    access_token = job.get("access_token").getAsString();
-//		    refresh_token = job.get("refresh_token").getAsString();
 	    } catch (Exception e) {
 	      System.out.println(e);
 	    }
 	    
 	    
 
-        String apiURL2 = "https://openapi.naver.com/v1/nid/me";    // json 결과
+        String apiURL2 = "https://openapi.naver.com/v1/nid/me";    			
 
         URL url = new URL(apiURL2);
         HttpURLConnection conn =  (HttpURLConnection)url.openConnection();
@@ -101,18 +99,20 @@ public class NaverLogin extends HttpServlet {
         conn.setRequestProperty("X-Naver-Client-Id", clientId);
         conn.setRequestProperty("X-Naver-Client-Secret", clientSecret);
         conn.setRequestProperty("Authorization", "Bearer " + access_token);
-        // 성공시 200 리턴
+    
         
         JsonParser jsonParser = new JsonParser();
         StringBuffer sb = new StringBuffer();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-        for (;;) {
+        while (true) {
         	String line = br.readLine();
-        	if (line==null) {break;}
+        	
+        	if (line == null) break;
+        	
         	sb.append(line);
         }
         br.close(); conn.disconnect();
-        System.out.println(sb.toString());
+        
         JsonObject tmpt = (JsonObject)jsonParser.parse(sb.toString());
         JsonObject data = (JsonObject)tmpt.get("response");
         try {
@@ -127,7 +127,7 @@ public class NaverLogin extends HttpServlet {
 			} else {
 				session.setAttribute("id", dto.getId());
 				Cookie cookie = new Cookie("id", dto.getId());
-				cookie.setMaxAge(60*30);
+				cookie.setMaxAge(60 * 30);
 				response.addCookie(cookie);
 				out.println("<script>location.href='"+request.getContextPath()+"/car.do'; </script>");
 				
@@ -144,20 +144,17 @@ public class NaverLogin extends HttpServlet {
   	      con.setRequestMethod("GET");
   	      int responseCode = con.getResponseCode();
   	      BufferedReader br3;
-//  	      System.out.print("responseCode="+responseCode);
-  	      if(responseCode==200) { // 정상 호출
-  	        br3 = new BufferedReader(new InputStreamReader(con.getInputStream()));
-  	      } else {  // 에러 발생
-  	        br3 = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+  	      if(responseCode == 200) { 		
+  	        br3 = new BufferedReader(new InputStreamReader(con.getInputStream()));		// 정상 호출
+  	      } else { 						 
+  	        br3 = new BufferedReader(new InputStreamReader(con.getErrorStream()));		// 에러 발생
   	      }
-  	      String inputLine;
+  	      
   	      StringBuffer res = new StringBuffer();
   	      while ((inputLine = br3.readLine()) != null) {
   	        res.append(inputLine);
   	      }
   	      br.close();
-  	      if(responseCode==200) {
-  	      }
   	    } catch (Exception e) {
   	      System.out.println(e);
   	    }

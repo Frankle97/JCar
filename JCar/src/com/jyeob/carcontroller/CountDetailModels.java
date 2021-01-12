@@ -40,7 +40,9 @@ public class CountDetailModels extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String sql = "select detail, count(detail) from carlist where model like ? group by detail";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		
 		try {
 			conn = new DBManager().getConnection();

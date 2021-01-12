@@ -19,10 +19,10 @@ public class CarListRemove implements Action{
 		PrintWriter out = response.getWriter();
 		CarDao dao = new CarDao();
 		int res = dao.removeCar(Integer.parseInt(request.getParameter("no")));
-		if (res>0) {
-			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='"+request.getContextPath()+"/carList.do'; </script>");
+		if (res > 0) {
+			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='" + request.getContextPath() + "/carList.do'; </script>");
 		} else {
-			out.println("<script>alert('삭제에 실패하였습니다. DAO를 확인해주세요.'); location.href='"+request.getContextPath()+"/carList.do'; </script>");
+			out.println("<script>alert('삭제에 실패하였습니다. DAO를 확인해주세요.'); location.href='"+request.getContextPath() + "/carList.do'; </script>");
 		}
 	}
 

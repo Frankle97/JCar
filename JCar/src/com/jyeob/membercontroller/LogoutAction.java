@@ -18,13 +18,13 @@ public class LogoutAction implements Action{
 		String cookie = request.getHeader("Cookie");
 		if (cookie != null) {
 		Cookie[] cookies = request.getCookies();	
-		for (int i=0; i<cookies.length; i++) {
+		for (int i = 0; i < cookies.length; i++) {
 			if (cookies[i].getName().equals("id")) {
 				cookies[i].setMaxAge(0);
 				response.addCookie(cookies[i]);
 			}
 		}
-		out.println("<script>alert('로그아웃 되었습니다.'); location.href='"+request.getContextPath()+"/car.do'; </script>");
+		out.println("<script>alert('로그아웃 되었습니다.'); location.href='" + request.getContextPath() + "/car.do'; </script>");
 		}
 	}
 

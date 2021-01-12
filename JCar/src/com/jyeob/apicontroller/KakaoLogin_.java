@@ -116,7 +116,7 @@ public class KakaoLogin_ extends HttpServlet {
 			} else {
 				session.setAttribute("id", dto.getId());
 				Cookie cookie = new Cookie("id", dto.getId());
-				cookie.setMaxAge(60*30);
+				cookie.setMaxAge(60 * 30);
 				response.addCookie(cookie);
 				out.println("<script>location.href='"+request.getContextPath()+"/car.do'; </script>");
 				

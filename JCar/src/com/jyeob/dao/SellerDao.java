@@ -14,7 +14,9 @@ public class SellerDao {
 	public int addSellerList(SellerDto dto) {
 		int res = 0;
 		String sql = "insert into sellerlist (id,name,phone,country,model,birth) values (?,?,?,?,?,?)";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -30,16 +32,23 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
+	
 	public int addSellerListAdmin(SellerDto dto) {
 		int res = 0;
 		String sql = "insert into sellerlist (id,name,phone,country,model,birth,status) values (?,?,?,?,?,?,'판매중')";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -55,8 +64,13 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return res;
@@ -64,7 +78,10 @@ public class SellerDao {
 	public SellerDto findMyOrder(String id) {
 		SellerDto dto = new SellerDto();
 		String sql = "select * from sellerlist where id like ?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -85,16 +102,23 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}
+	
 	public int removeMyOrder(String id) {
 		int res = 0;
 		String sql = "delete from sellerlist where id like ?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -104,15 +128,22 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	}
+	
 	public int removeOrder(int no) {
 		int res = 0;
 		String sql = "delete from sellerlist where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -122,63 +153,100 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	}
 	
-	
 	public ArrayList<SellerDto> allSellList(String chk){
 		ArrayList<SellerDto> list = new ArrayList<>();
 		String sql = "select * from sellerlist where status like ?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, chk);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				list.add(new SellerDto(rset.getInt("no"), rset.getInt("birth"), rset.getString("country"), rset.getString("model"), rset.getString("writer"), rset.getString("status"), rset.getString("name"),rset.getString("phone"), rset.getString("id"), rset.getString("date")));
+				list.add(new SellerDto(rset.getInt("no"), 
+						rset.getInt("birth"), 
+						rset.getString("country"), 
+						rset.getString("model"), 
+						rset.getString("writer"), 
+						rset.getString("status"), 
+						rset.getString("name"),
+						rset.getString("phone"), 
+						rset.getString("id"), 
+						rset.getString("date")));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return list;
 	}
+	
 	public ArrayList<SellerDto> allSellListAdmin(){
 		ArrayList<SellerDto> list = new ArrayList<>();
 		String sql = "select * from sellerlist";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				list.add(new SellerDto(rset.getInt("no"), rset.getInt("birth"), rset.getString("country"), rset.getString("model"), rset.getString("writer"), rset.getString("status"), rset.getString("name"),rset.getString("phone"), rset.getString("id"), rset.getString("date")));
+				list.add(new SellerDto(rset.getInt("no"), 
+						rset.getInt("birth"), 
+						rset.getString("country"), 
+						rset.getString("model"), 
+						rset.getString("writer"), 
+						rset.getString("status"), 
+						rset.getString("name"),
+						rset.getString("phone"), 
+						rset.getString("id"), 
+						rset.getString("date")));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return list;
 	}
 	
 	public int updateSellList(int no, String id) {
 		int res = 0;
 		String sql = "update sellerlist set status='승인완료', writer=? where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -189,8 +257,13 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return res;
@@ -198,7 +271,9 @@ public class SellerDao {
 	public int releaseSellList(int no) {
 		int res = 0;
 		String sql = "update sellerlist set status='승인대기', writer=null where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -208,8 +283,13 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return res;
@@ -217,32 +297,50 @@ public class SellerDao {
 	public ArrayList<SellerDto> SellListMyPosition(String name){
 		ArrayList<SellerDto> list = new ArrayList<>();
 		String sql = "select * from sellerlist where status in ('승인완료', '판매중') and writer like ? order by status desc";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				list.add(new SellerDto(rset.getInt("no"), rset.getInt("birth"), rset.getString("country"), rset.getString("model"), rset.getString("writer"), rset.getString("status"), rset.getString("name"),rset.getString("phone"), rset.getString("id"), rset.getString("date")));
+				list.add(new SellerDto(rset.getInt("no"), 
+						rset.getInt("birth"), 
+						rset.getString("country"), 
+						rset.getString("model"), 
+						rset.getString("writer"), 
+						rset.getString("status"), 
+						rset.getString("name"),
+						rset.getString("phone"), 
+						rset.getString("id"), 
+						rset.getString("date")));
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return list;
 	}
 	
 	public SellerDto findMyOrder2(String id) {
 		SellerDto dto = new SellerDto();
 		String sql = "select * from sellerlist where writer like ?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = db.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -264,9 +362,13 @@ public class SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}

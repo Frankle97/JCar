@@ -42,7 +42,9 @@ public class SearchSeller extends HttpServlet {
 		
 		String sql = "select * from carlist where writer=?";
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);

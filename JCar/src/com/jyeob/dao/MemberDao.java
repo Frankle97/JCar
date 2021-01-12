@@ -13,7 +13,11 @@ public class MemberDao {
 		int res = 0;
 		boolean same = false;
 		String sql = "insert into member (name,birth,gender,id,password,contact,email,ip,address, category) values (?,?,?,?,?,?,?,?,?,?)";
-		Connection conn = null; PreparedStatement pstmt = null, forchk = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		PreparedStatement forchk = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -31,7 +35,7 @@ public class MemberDao {
 			rset = forchk.executeQuery();
 			while(rset.next()) {
 				if (rset.getString("id").equals(dto.getId())) {
-					same=true;
+					same = true;
 				}
 			}
 			if (!same) {
@@ -41,17 +45,23 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (forchk!=null) {try{forchk.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || forchk != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	}
 	public int cntUsers() {
 		int res = 0;
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		String sql = "select count(*) from member";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -61,32 +71,53 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	}
-	
-	
+
 	public ArrayList<MemberDto> userList() {
 		ArrayList<MemberDto> list = new ArrayList<>();
 		String sql = "select * from member";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
-				list.add(new MemberDto(rset.getInt("no"),rset.getString("name"),rset.getString("birth"),rset.getString("gender"),rset.getString("id"),rset.getString("password"),rset.getString("contact"),rset.getString("email"),rset.getString("ip"),rset.getString("date"), rset.getString("address"), rset.getString("category")));
+				list.add(new MemberDto(rset.getInt("no"),
+						rset.getString("name"),
+						rset.getString("birth"),
+						rset.getString("gender"),
+						rset.getString("id"),
+						rset.getString("password"),
+						rset.getString("contact"),
+						rset.getString("email"),
+						rset.getString("ip"),
+						rset.getString("date"), 
+						rset.getString("address"), 
+						rset.getString("category")));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return list;
 	}
@@ -94,7 +125,10 @@ public class MemberDao {
 	public MemberDto findAccount(String id) {
 		MemberDto dto = new MemberDto();
 		String sql = "select * from member where id=?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -118,16 +152,24 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}
+	
 	public MemberDto findAccountEmail(String email) {
 		MemberDto dto = new MemberDto();
 		String sql = "select * from member where email=?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -151,16 +193,23 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}
+	
 	public MemberDto findMyID(String name, String email) {
 		MemberDto dto = new MemberDto();
 		String sql = "select * from member where name=? and email=?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		
 		try {
 			conn = new DBManager().getConnection();
@@ -176,17 +225,23 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return dto;
 	}
+	
 	public int findMyPW(String id, String name) {
 		int res = 0;
 		String sql = "select no from member where id=? and name=?";
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		
 		try {
 			conn = new DBManager().getConnection();
@@ -202,9 +257,13 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return res;
@@ -212,7 +271,9 @@ public class MemberDao {
 	public int changePW(String password, String no) {
 		int res = 0;
 		String sql = "update member set password=? where no=?";
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -223,17 +284,24 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
 		return res;
 	}
 	
 	public MemberDto login(String id, String pass) {
 		MemberDto dto = new MemberDto();
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		String sql = "select * from member where id=? and password=?";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -258,16 +326,22 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset!=null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn!=null || pstmt != null || rset != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return dto;
 	}
 	public int changeInfo(String id, String password, String email, String contact, String address) {
 		int res = 0;
-		Connection conn = null; PreparedStatement pstmt = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		String sql = "update member set password=?, email=?, contact=?, address=? where id=?";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -281,16 +355,23 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return res;
 	}
+	
 	public int removeAccount(String id, String pass) {
 		int res = 0;
-		Connection conn = null; PreparedStatement pstmt = null; 
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
 		String sql = "delete from member where id=? and password=?";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -301,18 +382,23 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			
-		}
-		
-		
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}		
 		return res;
 	}
+	
 	public int removeAccountForAdmin(String id) {
 		int res = 0;
-		Connection conn = null; PreparedStatement pstmt = null; 
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
 		String sql = "delete from member where id=?";
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -322,11 +408,14 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn!=null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt!=null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			
+			if (conn!=null || pstmt != null) { 
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
-
 		return res;
 	}
 }

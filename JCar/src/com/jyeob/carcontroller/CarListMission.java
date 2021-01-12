@@ -42,43 +42,46 @@ public class CarListMission extends HttpServlet {
 		
 		String[] list = request.getParameter("list").split("/");
 		String[] mission = request.getParameter("mission").split("/");
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String qq2= "";
-		for (int i=0; i<mission.length; i++) {
-			if (i!=mission.length-1) {
-				qq2+="?,";
+		String qq2 = "";
+		for (int i = 0; i < mission.length; i++) {
+			if (i != mission.length - 1) {
+				qq2 += "?,";
 			} else {
-				qq2+="?";
+				qq2 += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+") and mission in ("+qq2+") ";
+		String sql = "select * from carlist where no in (" + qq + ") and mission in (" + qq2 + ") ";
 		if (list[0] == "") {
-			sql = "select * from carlist where mission in ("+qq2+")";
+			sql = "select * from carlist where mission in (" + qq2 + ")";
 		}
 		
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int aa = 0;
 			if (list[0] != "") {
-				for (int i=0; i<list.length; i++) {
-					pstmt.setString((i+1), list[i]);
+				for (int i = 0; i < list.length; i++) {
+					pstmt.setString((i + 1), list[i]);
 					aa = i;
 				}
-				for (int i=0, j=aa+2; i<mission.length; i++, j++) {
+				for (int i = 0, j = aa + 2; i < mission.length; i++, j++) {
 					pstmt.setString(j, mission[i]);
 				}
 			} else {
-				for (int i=0; i<mission.length; i++) {
+				for (int i = 0; i < mission.length; i++) {
 					pstmt.setString(i+1, mission[i]);
 				}
 			} 
@@ -121,9 +124,6 @@ public class CarListMission extends HttpServlet {
 			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
 			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
 		}
-		
-
-	
 	}
 
 	/**

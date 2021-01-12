@@ -1,57 +1,14 @@
 package com.jyeob.dto;
 
 public class BoardDto {
-	private String category, title, date, content, ip;
-	private int no, hits;
+	private String category;
+	private String title;
+	private String date;
+	private String content;
+	private String ip;
+	private int no;
+	private int hits;
 	
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getCategory() {
-		
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public int getHits() {
-		return hits;
-	}
-	public void setHits(int hits) {
-		this.hits = hits;
-	}
-	@Override
-	public String toString() {
-		return "BoardDto [category=" + category + ", title=" + title + ", date=" + date + ", no=" + no + ", hits="
-				+ hits + "]";
-	}
 	public BoardDto() {
 		
 	}
@@ -73,6 +30,69 @@ public class BoardDto {
 		this.no = no;
 		this.hits = hits;
 	}
+	
+	public String getIp() {
+		return ip;
+	}
+	
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public String getCategory() {	
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public int getNo() {
+		return no;
+	}
+	
+	public void setNo(int no) {
+		this.no = no;
+	}
+	
+	public int getHits() {
+		return hits;
+	}
+	
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardDto [category=" + category + ", title=" + title + ", date=" + date + ", no=" + no + ", hits="
+				+ hits + "]";
+	}
+
 	
 	
 }

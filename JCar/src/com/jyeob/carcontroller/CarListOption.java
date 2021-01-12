@@ -42,51 +42,53 @@ public class CarListOption extends HttpServlet {
 		
 		String[] list = request.getParameter("list").split("/");
 		String[] option = request.getParameter("option").split("/");
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
 		@SuppressWarnings("unused")
-		String qq2= "";
-		for (int i=0; i<option.length; i++) {
-			if (i!=option.length-1) {
-				qq2+="?,";
+		String qq2 = "";
+		for (int i = 0; i < option.length; i++) {
+			if (i != option.length - 1) {
+				qq2 += "?,";
 			} else {
-				qq2+="?";
+				qq2 += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+")";
+		String sql = "select * from carlist where no in (" + qq + ")";
 		if (list[0] == "") {
 			sql = "select * from carlist where status != '판매완료'";
 		}
-		for (int i=0; i<option.length; i++) {
+		for (int i = 0; i < option.length; i++) {
 			sql += " and options like (?)"; 
 		}
 		
 		Gson gson = new Gson();
 		JsonObject menu = new JsonObject();
 		JsonArray list2 = new JsonArray();
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 	
 			try {
 				conn = new DBManager().getConnection();
 				pstmt = conn.prepareStatement(sql);
 				int aa = 0;
 				if (list[0] != "") {
-					for (int i=0; i<list.length; i++) {
-						pstmt.setString((i+1), list[i]);
+					for (int i = 0; i < list.length; i++) {
+						pstmt.setString((i + 1), list[i]);
 						aa = i;
 					}
-					for (int i=0, j=aa+2; i<option.length; i++, j++) {
-						pstmt.setString(j, "%"+option[i]+"%");
+					for (int i = 0, j = aa + 2; i < option.length; i++, j++) {
+						pstmt.setString(j, "%" + option[i] + "%");
 					}
 				} else {
-					for (int i=0; i<option.length; i++) {
-						pstmt.setString(i+1, "%"+option[i]+"%");
+					for (int i = 0; i < option.length; i++) {
+						pstmt.setString(i + 1, "%" + option[i] + "%");
 					}
 				} 
 				rset = pstmt.executeQuery();

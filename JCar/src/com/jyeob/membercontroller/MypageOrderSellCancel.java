@@ -18,9 +18,12 @@ public class MypageOrderSellCancel implements Action{
 		PrintWriter out = response.getWriter();
 		
 		if (new SellerDao().removeMyOrder(request.getParameter("id")) > 0) {
-			out.println("<script>alert('주문이 취소되었습니다.'); location.href='"+request.getContextPath()+"/myPageOrderSell.do?id="+request.getParameter("id")+"'; </script>");
+			out.println("<script>alert('주문이 취소되었습니다.'); "
+					+ "location.href='" + request.getContextPath() + "/myPageOrderSell.do"
+					+ "?id=" + request.getParameter("id") + "'; </script>");
 		} else {
-			out.println("<script>alert('주문 취소에 실패하였습니다. 관리자에게 문의해주세요.); location.href='\"+request.getContextPath()+\"/myPageOrderSell.do?id=\"+request.getParameter(\"id\")+\"';</script>");
+			out.println("<script>alert('주문 취소에 실패하였습니다. 관리자에게 문의해주세요.); "
+					+ "location.href='\"+request.getContextPath()+\"/myPageOrderSell.do?id=\"+request.getParameter(\"id\")+\"';</script>");
 		}
 	}
 

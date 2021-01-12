@@ -60,20 +60,19 @@ public class Current_Weather extends HttpServlet {
 				Node data = dataList.item(i);
 				if (data.getNodeType() == Element.ELEMENT_NODE) {
 					NodeList subdataList = data.getChildNodes();
-					for (int sub = 0; sub<subdataList.getLength(); sub++) {
+					for (int sub = 0; sub < subdataList.getLength(); sub++) {
 					Node son = subdataList.item(sub);
 					String nodeName = son.getNodeName();
 					String nodeValue = son.getTextContent();
-					if (!nodeName.equals("#text")) {
-						if (nodeName.equals("wfKor")) {
-						 if (i==0) {
-							 weather = nodeValue;
-						 }
+						if (!nodeName.equals("#text")) {
+							if (nodeName.equals("wfKor")) {
+								if (i==0) {
+								 weather = nodeValue;
+								}
+							}
 						}
 					}
-					}
 				}
-
 			}
 			JsonObject obj = new JsonObject();
 			obj.addProperty("weather", weather);

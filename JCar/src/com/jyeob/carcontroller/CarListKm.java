@@ -43,30 +43,32 @@ public class CarListKm extends HttpServlet {
 		String[] list = request.getParameter("list").split("/");
 		int start = Integer.parseInt(request.getParameter("minkm"));
 		int end = Integer.parseInt(request.getParameter("maxkm"));
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+") and km between ? and ?";
+		String sql = "select * from carlist where no in (" + qq + ") and km between ? and ?";
 		if (list[0] == "") {
 			sql = "select * from carlist where km between ? and ?";
 		}
 		
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			if (list[0] != "") {
-				for (int i=0; i<list.length; i++) {
-					pstmt.setInt((i+1), Integer.parseInt(list[i]));
-					if (i==list.length-1) {
-						pstmt.setInt(i+2, start);
-						pstmt.setInt(i+3, end);
+				for (int i = 0; i < list.length; i++) {
+					pstmt.setInt((i + 1), Integer.parseInt(list[i]));
+					if (i == list.length - 1) {
+						pstmt.setInt(i + 2, start);
+						pstmt.setInt(i + 3, end);
 					}
 				}
 			} else {

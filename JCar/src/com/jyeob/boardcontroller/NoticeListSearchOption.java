@@ -29,18 +29,20 @@ public class NoticeListSearchOption implements Action{
 			if (tab.equals("제목")) {
 				int pageTotal = dao.listCntSearchAnyTitle(search);
 				int onepageLimit = 10;
-				int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+				int pageAll = (int) Math.ceil(pageTotal / (float)onepageLimit);
 				int pstartno = 0;
 				if (request.getParameter("no") != null) {
 					pstartno = no;
 				}
 				list = dao.list10SearchAnyTitle(pstartno, search);
 				int bottomList = 10;
-				int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-				int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
+				int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
+				int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
 
-				int bottom_end=bottom_start+bottomList-1;
-				if (pageAll < bottom_end) {bottom_end = pageAll;} 
+				int bottom_end = bottom_start + bottomList - 1;
+				if (pageAll < bottom_end) {
+					bottom_end = pageAll;
+				} 
 				
 				request.setAttribute("chk", 2);
 				request.setAttribute("category", category);
@@ -49,22 +51,48 @@ public class NoticeListSearchOption implements Action{
 				request.setAttribute("search", search);
 				request.setAttribute("list", new PagingDto(pageTotal, onepageLimit, pageAll, pstartno, bottomList, bottom_current, bottom_start, bottom_end, list));
 				request.getRequestDispatcher("boardNotice/noticeBoard.jsp").forward(request, response);
-				} else if (tab.equals("내용")) {
-					int pageTotal = dao.listCntSearchAnyContent(search);
+				
+			} else if (tab.equals("내용")) {
+				int pageTotal = dao.listCntSearchAnyContent(search);
+				int onepageLimit = 10;
+				int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+				int pstartno = 0;
+				if (request.getParameter("no") != null) {
+					pstartno = no;
+				}
+				list = dao.list10SearchAnyContent(pstartno, search);
+				int bottomList = 10;
+				int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
+				int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
+				int bottom_end = bottom_start + bottomList - 1;
+				if (pageAll < bottom_end) {
+					bottom_end = pageAll;
+				} 
+					
+				request.setAttribute("chk", 2);
+				request.setAttribute("category", category);
+				request.setAttribute("tab", tab);
+				request.setAttribute("cnt", pageTotal);
+				request.setAttribute("search", search);
+				request.setAttribute("list", new PagingDto(pageTotal, onepageLimit, pageAll, pstartno, bottomList, bottom_current, bottom_start, bottom_end, list));
+					request.getRequestDispatcher("boardNotice/noticeBoard.jsp").forward(request, response);
+				} else if (tab.equals("전체")) {
+					int pageTotal = dao.listCntSearchAnyAll(search);
 					int onepageLimit = 10;
-					int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+					int pageAll = (int) Math.ceil(pageTotal / (float)onepageLimit);
 					int pstartno = 0;
 					if (request.getParameter("no") != null) {
 						pstartno = no;
 					}
-					list = dao.list10SearchAnyContent(pstartno, search);
+					list = dao.list10SearchAnyAll(pstartno, search);
 					int bottomList = 10;
-					int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-					int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
-
-					int bottom_end=bottom_start+bottomList-1;
-					if (pageAll < bottom_end) {bottom_end = pageAll;} 
-					
+					int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
+					int bottom_start = (int)Math.floor(((bottom_current-1) / (float)bottomList)) * bottomList + 1;
+					int bottom_end = bottom_start + bottomList - 1;
+					if (pageAll < bottom_end) {
+						bottom_end = pageAll;
+					} 
+						
 					request.setAttribute("chk", 2);
 					request.setAttribute("category", category);
 					request.setAttribute("tab", tab);
@@ -72,22 +100,26 @@ public class NoticeListSearchOption implements Action{
 					request.setAttribute("search", search);
 					request.setAttribute("list", new PagingDto(pageTotal, onepageLimit, pageAll, pstartno, bottomList, bottom_current, bottom_start, bottom_end, list));
 					request.getRequestDispatcher("boardNotice/noticeBoard.jsp").forward(request, response);
-					} else if (tab.equals("전체")) {
-						int pageTotal = dao.listCntSearchAnyAll(search);
+				}
+				} else {
+					if (tab.equals("제목")) {
+						int pageTotal = dao.listCntSearchTitle(category, search);
 						int onepageLimit = 10;
-						int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+						int pageAll = (int) Math.ceil(pageTotal / (float)onepageLimit);
 						int pstartno = 0;
 						if (request.getParameter("no") != null) {
 							pstartno = no;
 						}
-						list = dao.list10SearchAnyAll(pstartno, search);
+						list = dao.list10SearchTitle(pstartno, category, search);
 						int bottomList = 10;
-						int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-						int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
+						int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
+						int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
 
-						int bottom_end=bottom_start+bottomList-1;
-						if (pageAll < bottom_end) {bottom_end = pageAll;} 
-						
+						int bottom_end = bottom_start + bottomList - 1;
+						if (pageAll < bottom_end) {
+							bottom_end = pageAll;
+						} 
+				
 						request.setAttribute("chk", 2);
 						request.setAttribute("category", category);
 						request.setAttribute("tab", tab);
@@ -95,46 +127,23 @@ public class NoticeListSearchOption implements Action{
 						request.setAttribute("search", search);
 						request.setAttribute("list", new PagingDto(pageTotal, onepageLimit, pageAll, pstartno, bottomList, bottom_current, bottom_start, bottom_end, list));
 						request.getRequestDispatcher("boardNotice/noticeBoard.jsp").forward(request, response);
-					}
-		} else {
-			if (tab.equals("제목")) {
-				int pageTotal = dao.listCntSearchTitle(category, search);
-				int onepageLimit = 10;
-				int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
-				int pstartno = 0;
-				if (request.getParameter("no") != null) {
-					pstartno = no;
-				}
-				list = dao.list10SearchTitle(pstartno, category, search);
-				int bottomList = 10;
-				int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-				int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
-
-				int bottom_end=bottom_start+bottomList-1;
-				if (pageAll < bottom_end) {bottom_end = pageAll;} 
-				
-				request.setAttribute("chk", 2);
-				request.setAttribute("category", category);
-				request.setAttribute("tab", tab);
-				request.setAttribute("cnt", pageTotal);
-				request.setAttribute("search", search);
-				request.setAttribute("list", new PagingDto(pageTotal, onepageLimit, pageAll, pstartno, bottomList, bottom_current, bottom_start, bottom_end, list));
-				request.getRequestDispatcher("boardNotice/noticeBoard.jsp").forward(request, response);
 				} else if (tab.equals("내용")) {
 					int pageTotal = dao.listCntSearchContent(category, search);
 					int onepageLimit = 10;
-					int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+					int pageAll = (int) Math.ceil(pageTotal / (float)onepageLimit);
 					int pstartno = 0;
 					if (request.getParameter("no") != null) {
 						pstartno = no;
 					}
 					list = dao.list10SearchContent(pstartno, category, search);
 					int bottomList = 10;
-					int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-					int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
+					int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
+					int bottom_start = (int)Math.floor(((bottom_current - 1)/(float)bottomList)) * bottomList + 1;
 
-					int bottom_end=bottom_start+bottomList-1;
-					if (pageAll < bottom_end) {bottom_end = pageAll;} 
+					int bottom_end = bottom_start + bottomList - 1;
+					if (pageAll < bottom_end) {
+						bottom_end = pageAll;
+					} 
 					
 					request.setAttribute("chk", 2);
 					request.setAttribute("category", category);
@@ -146,18 +155,20 @@ public class NoticeListSearchOption implements Action{
 					} else if (tab.equals("전체")) {
 						int pageTotal = dao.listCntSearchAll(category, search);
 						int onepageLimit = 10;
-						int pageAll = (int) Math.ceil(pageTotal/(float)onepageLimit);
+						int pageAll = (int) Math.ceil(pageTotal / (float)onepageLimit);
 						int pstartno = 0;
 						if (request.getParameter("no") != null) {
 							pstartno = no;
 						}
 						list = dao.list10SearchAll(pstartno, category, search);
 						int bottomList = 10;
-						int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
-						int bottom_start=(int)Math.floor(((bottom_current-1)/(float)bottomList)) * bottomList + 1;
+						int bottom_current = (int)Math.ceil((pstartno+1) / (float)onepageLimit);
+						int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
 
-						int bottom_end=bottom_start+bottomList-1;
-						if (pageAll < bottom_end) {bottom_end = pageAll;} 
+						int bottom_end = bottom_start + bottomList - 1;
+						if (pageAll < bottom_end) {
+							bottom_end = pageAll;
+						} 
 						
 						request.setAttribute("chk", 2);
 						request.setAttribute("category", category);

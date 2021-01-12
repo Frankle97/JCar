@@ -19,9 +19,9 @@ public class UserChangePWAction implements Action{
 		int res = new MemberDao().changePW(request.getParameter("password"), request.getParameter("no"));
 		
 		if (res > 0) {
-			out.println("<script>alert('비밀번호가 수정되었습니다.'); location.href='"+request.getContextPath()+"/loginView.do'; </script>");
+			out.println("<script>alert('비밀번호가 수정되었습니다.'); location.href='" + request.getContextPath() + "/loginView.do'; </script>");
 		} else {
-			out.println("<script>alert('비밀번호 수정 실패. 관리자에게 문의해주세요.'); location.href='"+request.getContextPath()+"/loginView.do'; </script>");
+			out.println("<script>alert('비밀번호 수정 실패. 관리자에게 문의해주세요.'); location.href='" + request.getContextPath() + "/loginView.do'; </script>");
 		}
 	}
 

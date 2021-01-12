@@ -42,44 +42,46 @@ public class CarListFuel extends HttpServlet {
 		
 		String[] list = request.getParameter("list").split("/");
 		String[] fuel = request.getParameter("fuel").split("/");
-		String qq= "";
-		for (int i=0; i<list.length; i++) {
-			if (i!=list.length-1) {
-				qq+="?,";
+		String qq = "";
+		for (int i = 0; i < list.length; i++) {
+			if (i != list.length - 1) {
+				qq += "?,";
 			} else {
-				qq+="?";
+				qq += "?";
 			}	
 		}
-		String qq2= "";
-		for (int i=0; i<fuel.length; i++) {
-			if (i!=fuel.length-1) {
-				qq2+="?,";
+		String qq2 = "";
+		for (int i = 0; i < fuel.length; i++) {
+			if (i!=fuel.length - 1) {
+				qq2 += "?,";
 			} else {
-				qq2+="?";
+				qq2 += "?";
 			}	
 		}
-		String sql = "select * from carlist where no in ("+qq+") and fuel in ("+qq2+") ";
+		String sql = "select * from carlist where no in (" + qq + ") and fuel in (" + qq2 + ") ";
 		if (list[0] == "") {
-			sql = "select * from carlist where fuel in ("+qq2+") ";
+			sql = "select * from carlist where fuel in (" + qq2 + ") ";
 		}
 		
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int aa = 0;
 			if (list[0] != "") {
-				for (int i=0; i<list.length; i++) {
-					pstmt.setString((i+1), list[i]);
+				for (int i = 0; i < list.length; i++) {
+					pstmt.setString((i + 1), list[i]);
 					aa = i;
 				}
-				for (int i=0, j=aa+2; i<fuel.length; i++, j++) {
+				for (int i = 0, j = aa + 2; i < fuel.length; i++, j++) {
 					pstmt.setString(j, fuel[i]);
 				}
 			} else {
-				for (int i=0; i<fuel.length; i++) {
-					pstmt.setString(i+1, fuel[i]);
+				for (int i = 0; i < fuel.length; i++) {
+					pstmt.setString(i + 1, fuel[i]);
 				}
 			} 
 			rset = pstmt.executeQuery();

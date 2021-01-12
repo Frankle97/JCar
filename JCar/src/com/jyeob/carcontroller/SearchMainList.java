@@ -42,11 +42,14 @@ public class SearchMainList extends HttpServlet {
 		
 		String sql = "select * from carlist where detail like ? group by birth";
 		
-		Connection conn = null; PreparedStatement pstmt = null; ResultSet rset = null;
+		Connection conn = null; 
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
 		try {
 			conn = new DBManager().getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+request.getParameter("detail")+"%");
+			pstmt.setString(1, "%" + request.getParameter("detail") + "%");
 			rset = pstmt.executeQuery();
 			JsonArray list = new JsonArray();
 			while (rset.next()) {
@@ -82,11 +85,28 @@ public class SearchMainList extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if (conn != null) {try{conn.close();}catch(Exception e) {e.printStackTrace();}}
-			if (pstmt != null) {try{pstmt.close();}catch(Exception e) {e.printStackTrace();}}
-			if (rset != null) {try{rset.close();}catch(Exception e) {e.printStackTrace();}}
+			if (conn != null) {
+				try{
+					conn.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try{
+					pstmt.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (rset != null) {
+				try{
+					rset.close();
+				} catch(Exception e) { 
+					e.printStackTrace();
+				}
+			}
 		}
-	
 	}
 
 	/**

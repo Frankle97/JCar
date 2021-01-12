@@ -19,9 +19,9 @@ public class UserRemoveForAdmin implements Action{
 		
 		int res = new MemberDao().removeAccountForAdmin(request.getParameter("id"));
 		if (res > 0) {
-			out.println("<script>alert('유저 삭제 완료.'); location.href='"+request.getContextPath()+"/adminPage.do'; </script>");	
+			out.println("<script>alert('유저 삭제 완료.'); location.href='" + request.getContextPath() + "/adminPage.do'; </script>");	
 		} else {
-			out.println("<script>alert('에러 발생.'); location.href='"+request.getContextPath()+"/adminPage.do'; </script>");
+			out.println("<script>alert('에러 발생.'); location.href='" + request.getContextPath() + "/adminPage.do'; </script>");
 		}
 		
 	}

@@ -19,9 +19,7 @@ public class AddSellerList implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		SellerDto dto = new SellerDto(request.getParameter("id"), request.getParameter("name"), request.getParameter("phone"), request.getParameter("country"), request.getParameter("model"), Integer.parseInt(request.getParameter("birth")));
-
 		int res = new SellerDao().addSellerList(dto);
-		
 		
 		if (res>0) {
 			out.println("<script>alert('신청이 완료되었습니다. 등록결과는 마이페이지에서 확인이 가능합니다.'); location.href='"+request.getContextPath()+"/car.do'; </script>");

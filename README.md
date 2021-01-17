@@ -7,7 +7,7 @@
 
 
 ### 🛠 기술 스택
-* **Language** : Java, JSP, Spring Framework, html, css, Javascript, Ajax, jQuery 
+* **Language** : Java, JSP, Spring Framework, Html, Css, Javascript, Ajax, jQuery 
 * **Database** : MySql 5.7
 * **Version**  : jdk 8.0 / Tomcat 8.5
 * **IDE**      : Eclipse

@@ -1,4 +1,4 @@
-# 🔗 [J Car](http://tieotdsf1324.cafe24.com/port/car.do)**
+# 🔗 [J Car](http://tieotdsf1324.cafe24.com/port/car.do)
  
 ### 🗺 서비스 소개
 국내 중고차 사이트 K Car을 모티브하여 1인 기획 및 개발을 하였습니다.

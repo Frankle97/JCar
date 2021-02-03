@@ -30,6 +30,6 @@
 * **[시연 동영상](https://youtu.be/PxTwLjiz0oc)**
 
 ### 💻 자바 포트폴리오 
-* **[차량 견적내기](https://github.com/Frankle97/createEstimate)**
+* **[J Car-Ver1](https://github.com/Frankle97/JCar-Ver1)**
 
  

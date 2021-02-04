@@ -1,7 +1,11 @@
 # 🔗 [J Car](http://tieotdsf1324.cafe24.com/port/car.do)
  
 ### 🗺 소개
-국내 중고차 사이트 K Car을 모티브로 1인 기획 및 개발하였습니다.
+* 국내 중고차 사이트 K Car을 모티브로 1인 기획 및 개발하였습니다.
+  * J Car는 **일반회원/매매회원/관리자** 세 가지 회원 구분으로 각각 다른 서비스를 이용할 수 있도록 개발하였습니다.
+    * 일반회원은 차량을 선택한 조건에 따라 검색, 구매, 판매신청을 할 수 있습니다.
+    * 매매회원은 일반차량이 판매신청한 매물을 본인 목록으로 가져와 등록할 수 있습니다.
+    * 관리자는 관리자 전용 페이지에서 고객관리와 등록된 매물들을 관리할 수 있습니다.
 
 
 ### 🛠 기술 스택
@@ -23,7 +27,33 @@
   * 다음 우편번호 API를 활용하여 회원가입시 도로명 주소와 구 주소를 입력할 수 있도록 구현하였습니다.
   * 기상청 날씨 누리 API를 파싱하여 메인 페이지에서 현재 강남구의 날씨를 실시간으로 알 수 있도록 구현하였습니다.  
   
+### 📖 업무 분석
+<details>
+ <summary> <strong>📌 클릭!</strong> </summary>
+![image](https://user-images.githubusercontent.com/61595394/106874659-2eaf0f00-6719-11eb-8301-5ffc383eb3be.png)
 
+</details>
+
+### 📖 프로젝트 기능 설명
+<details>
+ <summary> <strong>📌 클릭!</strong> </summary>
+![image](https://user-images.githubusercontent.com/61595394/106872412-9dd73400-6716-11eb-9584-e86c0ec5e905.png)
+![image](https://user-images.githubusercontent.com/61595394/106872704-eee72800-6716-11eb-9332-79a9f208b64e.png)
+![image](https://user-images.githubusercontent.com/61595394/106872756-01616180-6717-11eb-9756-f813faaed4be.png)
+![image](https://user-images.githubusercontent.com/61595394/106872797-0de5ba00-6717-11eb-8d20-23e0dd930bcd.png)
+![image](https://user-images.githubusercontent.com/61595394/106872900-31106980-6717-11eb-8a42-8bdb828dd97b.png)
+![image](https://user-images.githubusercontent.com/61595394/106873187-8c425c00-6717-11eb-9240-079ed4c9b4d0.png)
+![image](https://user-images.githubusercontent.com/61595394/106873248-9a907800-6717-11eb-8c10-4a2811280907.png)
+![image](https://user-images.githubusercontent.com/61595394/106873285-a4b27680-6717-11eb-8620-7abb2ed21772.png)
+![image](https://user-images.githubusercontent.com/61595394/106873316-ad0ab180-6717-11eb-89ef-44f28422ceb3.png)
+![image](https://user-images.githubusercontent.com/61595394/106873356-b7c54680-6717-11eb-814f-dc2d1cf6b825.png)
+![image](https://user-images.githubusercontent.com/61595394/106873405-c57acc00-6717-11eb-932e-bae3b2916fe3.png) 
+![image](https://user-images.githubusercontent.com/61595394/106873521-e3e0c780-6717-11eb-9419-42a031aad55f.png)
+![image](https://user-images.githubusercontent.com/61595394/106873552-ee02c600-6717-11eb-8af2-bfa0b14f8f46.png)
+![image](https://user-images.githubusercontent.com/61595394/106873598-f8bd5b00-6717-11eb-9911-cf3804f6f411.png)
+![image](https://user-images.githubusercontent.com/61595394/106873642-04108680-6718-11eb-9485-6c51850ab4d5.png)
+![image](https://user-images.githubusercontent.com/61595394/106873683-0d015800-6718-11eb-890c-30b9315b9507.png)
+</details>
 
 ### 🐛 프로젝트 시연 
 * **[바로가기](http://tieotdsf1324.cafe24.com/port/car.do)**

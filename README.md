@@ -30,13 +30,27 @@
 ### 📖 업무 분석
 <details>
  <summary> <strong>📌 클릭!</strong> </summary>
-![image](https://user-images.githubusercontent.com/61595394/106874659-2eaf0f00-6719-11eb-8301-5ffc383eb3be.png)
+
+![image](https://user-images.githubusercontent.com/61595394/106875381-f3f9a680-6719-11eb-851d-c2268a7cf90c.png)
+![image](https://user-images.githubusercontent.com/61595394/106875300-dd534f80-6719-11eb-9478-d2b20f617113.png)
+![image](https://user-images.githubusercontent.com/61595394/106875468-0bd12a80-671a-11eb-9b28-268112e896d6.png)
+
+
+</details>
+
+### 📖 ERD : 테이블 관계파악
+<details>
+ <summary> <strong>📌 클릭!</strong> </summary>
+
+![image](https://user-images.githubusercontent.com/61595394/106875616-3622e800-671a-11eb-931e-3a8c68196b76.png)
+![image](https://user-images.githubusercontent.com/61595394/106875670-46d35e00-671a-11eb-9709-6f6452a434e2.png)
 
 </details>
 
 ### 📖 프로젝트 기능 설명
 <details>
  <summary> <strong>📌 클릭!</strong> </summary>
+ 
 ![image](https://user-images.githubusercontent.com/61595394/106872412-9dd73400-6716-11eb-9584-e86c0ec5e905.png)
 ![image](https://user-images.githubusercontent.com/61595394/106872704-eee72800-6716-11eb-9332-79a9f208b64e.png)
 ![image](https://user-images.githubusercontent.com/61595394/106872756-01616180-6717-11eb-9756-f813faaed4be.png)
@@ -53,6 +67,7 @@
 ![image](https://user-images.githubusercontent.com/61595394/106873598-f8bd5b00-6717-11eb-9911-cf3804f6f411.png)
 ![image](https://user-images.githubusercontent.com/61595394/106873642-04108680-6718-11eb-9485-6c51850ab4d5.png)
 ![image](https://user-images.githubusercontent.com/61595394/106873683-0d015800-6718-11eb-890c-30b9315b9507.png)
+ 
 </details>
 
 ### 🐛 프로젝트 시연 

@@ -72,7 +72,6 @@
 
 ### 🐛 프로젝트 시연 
 * 🔗 **[바로가기](http://tieotdsf1324.cafe24.com/port/car.do)**
-* 🔗 **[시연 동영상](https://youtu.be/PxTwLjiz0oc)**
 
 ### 💻 자바 포트폴리오 
 * **[J Car-Ver1](https://github.com/Frankle97/JCar-Ver1)**

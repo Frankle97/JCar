@@ -85,7 +85,7 @@ public class NaverLogin extends HttpServlet {
 		    JsonObject job = (JsonObject)jsonParser.parse(res.toString());
 		    access_token = job.get("access_token").getAsString();
 	    } catch (Exception e) {
-	      System.out.println(e);
+	      
 	    }
 	    
 	    
@@ -156,7 +156,7 @@ public class NaverLogin extends HttpServlet {
   	      }
   	      br.close();
   	    } catch (Exception e) {
-  	      System.out.println(e);
+  	    	
   	    }
 	}
 

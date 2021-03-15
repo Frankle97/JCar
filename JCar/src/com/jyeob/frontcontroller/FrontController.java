@@ -28,7 +28,7 @@ import com.jyeob.carcontroller.CarListRemove;
 import com.jyeob.membercontroller.Action;
 import com.jyeob.membercontroller.AddListFinal;
 import com.jyeob.membercontroller.AddListFinal_Admin;
-import com.jyeob.membercontroller.CheckAcs;
+import com.jyeob.membercontroller.CheckupPassword;
 import com.jyeob.membercontroller.JoinAction;
 import com.jyeob.membercontroller.LoginAction;
 import com.jyeob.membercontroller.LogoutAction;
@@ -119,7 +119,7 @@ public class FrontController extends HttpServlet {
 		} else if (path.equals("/editInfo.do")) {
 			request.getRequestDispatcher("/member/userEditInfo.jsp").forward(request, response);
 		} else if (path.equals("/CheckAcs.do")) {
-			comm = new CheckAcs();
+			comm = new CheckupPassword();
 			comm.execute(request, response);
 		} else if (path.equals("/changeMyInfo.do")) {
 			request.getRequestDispatcher("/member/changeMyInfo.jsp").forward(request, response);

@@ -15,14 +15,14 @@ import com.jyeob.dto.MemberDto;
 /**
  * Servlet implementation class CheckOverlapId
  */
-@WebServlet("/CheckOverlapId")
-public class CheckOverlapId extends HttpServlet {
+@WebServlet("/CheckOverlapEmail")
+public class CheckupEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckOverlapId() {
+    public CheckupEmail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,7 @@ public class CheckOverlapId extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		MemberDto dto = new MemberDao().findAccount(request.getParameter("id"));
+		MemberDto dto = new MemberDao().findAccountEmail(request.getParameter("email"));
 		if (dto.getId() != null) {
 			out.println("0");
 		} else {

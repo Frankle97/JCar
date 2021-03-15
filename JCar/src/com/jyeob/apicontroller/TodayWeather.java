@@ -23,13 +23,13 @@ import com.google.gson.JsonObject;
  * Servlet implementation class Current_Weather
  */
 @WebServlet("/Current_Weather")
-public class Current_Weather extends HttpServlet {
+public class TodayWeather extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Current_Weather() {
+    public TodayWeather() {
         super();
         // TODO Auto-generated constructor stub
     }

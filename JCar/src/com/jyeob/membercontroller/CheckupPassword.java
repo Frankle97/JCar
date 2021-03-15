@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jyeob.dao.MemberDao;
 import com.jyeob.dto.MemberDto;
 
-public class CheckAcs implements Action{
+public class CheckupPassword implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

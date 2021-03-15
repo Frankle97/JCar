@@ -11,6 +11,7 @@ public class DBManager {
 	public static Connection getConn() {
 		return conn;
 	}
+	
 	public Connection getConnection() throws Exception{
 		try {
 			Context initContext = new InitialContext();

@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.jyeob.dao.MemberDao;
@@ -24,13 +27,13 @@ import com.jyeob.dto.MemberDto;
  * Servlet implementation class KakaoLogin
  */
 @WebServlet("/kakao")
-public class KakaoLogin_ extends HttpServlet {
+public class KakaoLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public KakaoLogin_() {
+    public KakaoLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,7 +46,8 @@ public class KakaoLogin_ extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		HttpSession session = request.getSession();
 		
-		
+		final Logger logger = LoggerFactory.getLogger(KakaoLogin.class);
+		logger.debug("asd");
 		PrintWriter out = response.getWriter();
 		String code = request.getParameter("code");
 		String client_id = "276c3f616086bbc0130bdbbb701b41a0";
@@ -123,6 +127,7 @@ public class KakaoLogin_ extends HttpServlet {
 			}
 			
 		} catch(Exception e) {
+			
 			out.println("<script>alert('선택 제공 항목의 카카오계정(이메일) 체크를 허용해주셔야합니다.'); location.href='"+request.getContextPath()+"/loginView.do';</script>");
 		}
 		

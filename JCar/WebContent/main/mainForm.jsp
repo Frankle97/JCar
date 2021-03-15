@@ -13,12 +13,12 @@
 			type:"post",
 			dataType:"json",
 			success:function(data){
-				var dec = "현재 서울 강남구의 날씨는 ";
+				var dec = "서울 강남구의 현재 날씨는 ";
 				var des2 = " ";
 				if (data.weather == "비"){
 					des2 = " 빗길 운전 조심하세요!";
 				}
-				$("#current_weather").html(dec + "<strong style='color:mediumblue'>" + data.weather + "</strong>입니다." + des2 + " <strong style='font-size:60%'>출처 : 기상청 rss</strong>");
+				$("#current_weather").html(dec + "<strong style='color:mediumblue'>" + data.weather + "</strong>입니다." + des2);
 			}, error:function(xhr, textStatus, errorThrown){
 				console.log(errorThrown);
 			}

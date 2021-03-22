@@ -22,7 +22,7 @@ public class NoticeWrite implements Action{
 		dto.setCategory(request.getParameter("category"));
 		dto.setTitle(request.getParameter("title"));
 		dto.setContent(request.getParameter("content"));
-		if (new BoardDao().WriteNotice(dto) > 0) {
+		if (new BoardDao().addNotice(dto) > 0) {
 			out.println("<script>alert('등록이 완료되었습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");	
 		} else {
 			out.println("<script>alert('등록에 실패하였습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");

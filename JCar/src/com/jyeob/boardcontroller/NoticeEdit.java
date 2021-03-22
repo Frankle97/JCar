@@ -24,7 +24,7 @@ public class NoticeEdit implements Action{
 		dto.setContent(request.getParameter("content"));
 		dto.setNo(Integer.parseInt(request.getParameter("no")));
 		
-		if (new BoardDao().EditNotice(dto) > 0) {
+		if (new BoardDao().editNotice(dto) > 0) {
 		out.println("<script>alert('수정이 완료되었습니다.'); location.href='"+request.getContextPath()+"/detailNotice.do?no="+request.getParameter("no")+"'; </script>");	
 		} else {
 		out.println("<script>alert('수정에 실패하였습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");

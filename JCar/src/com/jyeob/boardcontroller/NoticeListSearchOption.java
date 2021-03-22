@@ -34,7 +34,7 @@ public class NoticeListSearchOption implements Action{
 				if (request.getParameter("no") != null) {
 					pstartno = no;
 				}
-				list = dao.list10SearchAnyTitle(pstartno, search);
+				list = dao.showNoticeListPagingSearchAnyTitle(pstartno, search);
 				int bottomList = 10;
 				int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
 				int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
@@ -60,7 +60,7 @@ public class NoticeListSearchOption implements Action{
 				if (request.getParameter("no") != null) {
 					pstartno = no;
 				}
-				list = dao.list10SearchAnyContent(pstartno, search);
+				list = dao.showNoticeListPagingSearchAnyContent(pstartno, search);
 				int bottomList = 10;
 				int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
 				int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
@@ -84,7 +84,7 @@ public class NoticeListSearchOption implements Action{
 					if (request.getParameter("no") != null) {
 						pstartno = no;
 					}
-					list = dao.list10SearchAnyAll(pstartno, search);
+					list = dao.showNoticeListPagingSearchAnyAll(pstartno, search);
 					int bottomList = 10;
 					int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
 					int bottom_start = (int)Math.floor(((bottom_current-1) / (float)bottomList)) * bottomList + 1;
@@ -110,7 +110,7 @@ public class NoticeListSearchOption implements Action{
 						if (request.getParameter("no") != null) {
 							pstartno = no;
 						}
-						list = dao.list10SearchTitle(pstartno, category, search);
+						list = dao.showNoticeListPagingSearchTitle(pstartno, category, search);
 						int bottomList = 10;
 						int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
 						int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;
@@ -135,7 +135,7 @@ public class NoticeListSearchOption implements Action{
 					if (request.getParameter("no") != null) {
 						pstartno = no;
 					}
-					list = dao.list10SearchContent(pstartno, category, search);
+					list = dao.showNoticeListPagingSearchContent(pstartno, category, search);
 					int bottomList = 10;
 					int bottom_current = (int)Math.ceil((pstartno + 1) / (float)onepageLimit);
 					int bottom_start = (int)Math.floor(((bottom_current - 1)/(float)bottomList)) * bottomList + 1;
@@ -160,7 +160,7 @@ public class NoticeListSearchOption implements Action{
 						if (request.getParameter("no") != null) {
 							pstartno = no;
 						}
-						list = dao.list10SearchAll(pstartno, category, search);
+						list = dao.showNoticeListPagingSearchAll(pstartno, category, search);
 						int bottomList = 10;
 						int bottom_current = (int)Math.ceil((pstartno+1) / (float)onepageLimit);
 						int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;

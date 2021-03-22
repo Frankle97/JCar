@@ -17,7 +17,7 @@ public class NoticeDelete implements Action{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		int res = new BoardDao().DeleteNotice(Integer.parseInt(request.getParameter("no")));
+		int res = new BoardDao().deleteNotice(Integer.parseInt(request.getParameter("no")));
 		
 		if (res > 0) {
 			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='"+request.getContextPath()+"/showNotice.do'; </script>");

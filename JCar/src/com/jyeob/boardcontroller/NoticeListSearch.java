@@ -28,7 +28,7 @@ public class NoticeListSearch implements Action{
 		if (request.getParameter("no") != null) {
 			pstartno = Integer.parseInt(request.getParameter("no"));
 		}
-		list = dao.list10Search(pstartno, request.getParameter("category"));
+		list = dao.showNoticeListPagingSearch(pstartno, request.getParameter("category"));
 		int bottomList = 10;
 		int bottom_current = (int)Math.ceil((pstartno+1)/(float)onepageLimit);
 		int bottom_start = (int)Math.floor(((bottom_current - 1) / (float)bottomList)) * bottomList + 1;

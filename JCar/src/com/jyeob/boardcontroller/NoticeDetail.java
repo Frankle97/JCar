@@ -17,7 +17,7 @@ public class NoticeDetail implements Action{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		BoardDto dto = new BoardDao().DetailNotice(Integer.parseInt(request.getParameter("no")));
+		BoardDto dto = new BoardDao().showNotice(Integer.parseInt(request.getParameter("no")));
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("/boardNotice/noticeBoard_Detail.jsp").forward(request, response);
 	}

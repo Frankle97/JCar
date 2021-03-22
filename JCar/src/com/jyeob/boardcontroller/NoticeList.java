@@ -28,7 +28,7 @@ public class NoticeList implements Action{
 		if (request.getParameter("no") != null) {
 			pstartno = Integer.parseInt(request.getParameter("no"));
 		}
-		list = dao.list10(pstartno);
+		list = dao.showNoticeListPaging(pstartno);
 		int bottomList = 10;
 		int bottom_current = (int)Math.ceil((pstartno + 1)/(float)onepageLimit);
 		int bottom_start = (int)Math.floor(((bottom_current - 1)/(float)bottomList)) * bottomList + 1;

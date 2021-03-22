@@ -11,7 +11,7 @@ import com.jyeob.dbmanager.DBManager;
 import com.jyeob.dto.BoardDto;
 
 public class BoardDao {
-	public int WriteNotice(BoardDto dto) {
+	public int addNotice(BoardDto dto) {
 		int res = 0;
 		String sql = "insert into noticeboard (category, title, content, ip) values (?,?,?,?)";
 		Connection conn = null; 
@@ -37,7 +37,7 @@ public class BoardDao {
 		}
 		return res;
 	}
-	public int EditNotice(BoardDto dto) {
+	public int editNotice(BoardDto dto) {
 		int res = 0;
 		String sql = "update noticeboard set category=?, title=?, content=? where no=?";
 		Connection conn = null; PreparedStatement pstmt = null;
@@ -63,7 +63,7 @@ public class BoardDao {
 		}
 		return res;
 	}
-	public ArrayList<BoardDto> ListNotice(){
+	public ArrayList<BoardDto> showNoticeAll(){
 		ArrayList<BoardDto> list = new ArrayList<>();
 		String sql = "select * from noticeboard order by no desc";
 		Connection conn = null; 
@@ -94,7 +94,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public BoardDto DetailNotice(int no) {
+	public BoardDto showNotice(int no) {
 		BoardDto dto = new BoardDto();
 		String sql = "select * from noticeboard where no=?";
 		Connection conn = null; 
@@ -132,7 +132,7 @@ public class BoardDao {
 		return dto;
 	} 
 	
-	public int DeleteNotice(int no) {
+	public int deleteNotice(int no) {
 		int res = 0;
 		String sql = "delete from noticeboard where no=?";
 		Connection conn = null; 
@@ -417,7 +417,7 @@ public class BoardDao {
 		
 		return result;
 	}
-	public ArrayList<BoardDto> list10(int pstartno){
+	public ArrayList<BoardDto> showNoticeListPaging(int pstartno){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
@@ -451,7 +451,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<BoardDto> list10Search(int pstartno, String category){
+	public ArrayList<BoardDto> showNoticeListPagingSearch(int pstartno, String category){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null;
@@ -488,7 +488,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<BoardDto> list10SearchTitle(int pstartno, String category, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchTitle(int pstartno, String category, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
@@ -525,7 +525,7 @@ public class BoardDao {
 		
 		return list;
 	}
-	public ArrayList<BoardDto> list10SearchContent(int pstartno, String category, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchContent(int pstartno, String category, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
@@ -562,7 +562,7 @@ public class BoardDao {
 		
 		return list;
 	}
-	public ArrayList<BoardDto> list10SearchAnyTitle(int pstartno, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchAnyTitle(int pstartno, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
@@ -598,7 +598,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<BoardDto> list10SearchAnyContent(int pstartno, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchAnyContent(int pstartno, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
@@ -634,7 +634,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<BoardDto> list10SearchAnyAll(int pstartno, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchAnyAll(int pstartno, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
@@ -671,7 +671,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<BoardDto> list10SearchAll(int pstartno, String category, String search){
+	public ArrayList<BoardDto> showNoticeListPagingSearchAll(int pstartno, String category, String search){
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		Connection conn = null; 
 		PreparedStatement pstmt = null; 
